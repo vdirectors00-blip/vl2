@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VL — 브이엘 퍼스널컬러 · 이미지 컨설팅 | 시안 2</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<style>
+:root{
+  --primary:#402759;        /* 메인컬러 */
+  --primary-deep:#2c1a3e;
+  --primary-soft:#5a3b75;
+  --primary-wash:#efe7f4;
+  --point:#c4a462;          /* 포인트컬러 */
+  --point-soft:#e2cf99;
+  --point-wash:#f6efde;
+  --beige:#F4ECE0;
+  --beige-2:#E9DECD;
+  --cream:#fbf6ee;
+  --ink:#231a2c;
+  --mute:#7d7587;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Pretendard Variable','Pretendard',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  background:var(--cream);color:var(--ink);
+  font-weight:300;line-height:1.75;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+.display{font-weight:200;letter-spacing:-1px;line-height:1.15}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.eyebrow{font-size:11.5px;letter-spacing:4px;text-transform:uppercase;color:var(--primary);font-weight:600}
+
+/* ── ICONS ──────────────────────────────────────── */
+.ico{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.ico svg{display:block;width:100%;height:100%}
+
+/* ── BLOB BACKGROUND ────────────────────────────── */
+body::before,body::after{
+  content:'';position:fixed;width:1100px;height:1100px;border-radius:50%;
+  pointer-events:none;z-index:0;filter:blur(50px);
+}
+body::before{top:-300px;right:-360px;background:radial-gradient(circle at 30% 30%,rgba(90,59,117,.18),rgba(90,59,117,0) 65%)}
+body::after{bottom:-400px;left:-420px;background:radial-gradient(circle at 60% 40%,rgba(64,39,89,.16),rgba(64,39,89,0) 65%)}
+nav,footer,section{position:relative;z-index:1}
+
+/* ── NAV ───────────────────────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 56px;
+  background:rgba(64,39,89,.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  transition:padding .4s,background .4s;
+}
+.nav.scrolled{padding:14px 56px;background:rgba(44,26,62,.98)}
+.nav-logo{display:inline-flex;align-items:center}
+.nav-logo img{height:50px;width:auto;display:block;transition:height .3s,opacity .3s}
+.nav-logo:hover img{opacity:.8}
+.nav.scrolled .nav-logo img{height:40px}
+.nav-menu{display:flex;gap:38px}
+.nav-menu a{
+  font-size:13.5px;letter-spacing:.5px;color:#fff;
+  font-weight:500;transition:color .3s,opacity .3s;position:relative;
+}
+.nav-menu a::after{content:'';position:absolute;left:50%;bottom:-6px;width:0;height:1.5px;background:#fff;transition:width .4s,left .4s}
+.nav-menu a:hover{color:#fff;opacity:.85}
+.nav-menu a:hover::after{width:100%;left:0}
+.nav-cta-area{display:flex;gap:10px}
+.nav-cta-area a{
+  font-size:12.5px;color:#fff;font-weight:500;
+  padding:9px 20px;border:1px solid rgba(255,255,255,.45);border-radius:999px;
+  transition:background .3s,color .3s,border-color .3s;
+}
+.nav-cta-area a.solid{background:#fff;color:var(--primary);border-color:#fff}
+.nav-cta-area a:hover{background:#fff;color:var(--primary);border-color:#fff}
+.nav-cta-area a.solid:hover{background:rgba(255,255,255,.88);border-color:rgba(255,255,255,.88);color:var(--primary-deep)}
+
+/* ── FLOAT BTNS ────────────────────────────────── */
+.float-btns{
+  position:fixed;right:24px;top:50%;transform:translateY(-50%);
+  display:grid;gap:10px;z-index:90;
+}
+.float-btns a{
+  width:60px;height:60px;border-radius:14px;
+  background:#fff;color:var(--primary);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-size:10px;letter-spacing:.5px;gap:4px;font-weight:600;
+  box-shadow:0 8px 22px rgba(64,39,89,.16);
+  transition:transform .3s,background .3s,color .3s;
+  border:1px solid rgba(64,39,89,.08);
+}
+.float-btns a.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.float-btns a:hover{transform:translateX(-2px);background:var(--primary);color:#fff;border-color:var(--primary)}
+.float-btns a .ico{width:20px;height:20px}
+
+/* ── HERO ────────────────────────────────────── */
+.hero{
+  padding:180px 24px 130px;
+  text-align:center;
+  position:relative;overflow:hidden;
+  min-height:88vh;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('../퍼스널.jfif');
+  background-size:cover;background-position:center;
+  filter:saturate(.85) brightness(1.02);
+  animation:heroZoom 18s ease-out forwards;
+}
+@keyframes heroZoom{
+  from{transform:scale(1.08)}
+  to{transform:scale(1)}
+}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(28,20,36,.42) 0%, rgba(28,20,36,.38) 50%, rgba(28,20,36,.5) 100%);
+}
+.hero-blob{display:none}
+@keyframes blobFloat{
+  0%,100%{transform:translate(-50%,-50%) scale(1)}
+  50%{transform:translate(-48%,-52%) scale(1.06)}
+}
+.hero-inner{position:relative;z-index:3;max-width:980px;margin:0 auto}
+.hero-eyebrow{
+  font-size:12.5px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--point);margin-bottom:28px;font-weight:600;
+  opacity:0;animation:fadeUp 1s .2s forwards;
+  text-shadow:0 1px 18px rgba(0,0,0,.45);
+}
+.hero-title{
+  font-size:62px;font-weight:700;letter-spacing:-1.5px;line-height:1.25;
+  color:#fff;
+  opacity:0;animation:fadeUp 1.2s .35s forwards;
+  text-shadow:0 4px 28px rgba(0,0,0,.45);
+}
+.hero-title strong{font-weight:800;color:var(--point)}
+.hero-sub{
+  margin-top:30px;font-size:16px;font-weight:500;color:rgba(255,255,255,.92);
+  letter-spacing:.3px;line-height:1.7;
+  opacity:0;animation:fadeUp 1s .55s forwards;
+  text-shadow:0 1px 16px rgba(0,0,0,.4);
+}
+.hero-en{
+  margin-top:12px;font-size:13px;
+  color:rgba(255,255,255,.8);letter-spacing:.5px;line-height:1.75;font-weight:400;
+  opacity:0;animation:fadeUp 1s .7s forwards;max-width:580px;margin-left:auto;margin-right:auto;
+  text-shadow:0 1px 14px rgba(0,0,0,.4);
+}
+.hero-cta{
+  margin-top:44px;display:inline-flex;align-items:center;gap:12px;
+  background:var(--primary);color:#fff;padding:18px 38px;border-radius:999px;
+  font-size:14px;letter-spacing:1px;font-weight:500;
+  box-shadow:0 10px 24px rgba(64,39,89,.22);
+  transition:background .3s,transform .3s,box-shadow .3s;
+  opacity:0;animation:fadeUp 1s .9s forwards;
+}
+.hero-cta .ico{width:18px;height:18px}
+.hero-cta:hover{background:var(--point);color:var(--primary-deep);transform:translateY(-2px);box-shadow:0 14px 30px rgba(196,164,98,.35)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}from{opacity:0;transform:translateY(28px)}}
+
+/* ── REVEAL ───────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1.2s cubic-bezier(.2,.8,.2,1),transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-stagger > *{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal-stagger.in > *:nth-child(1){transition-delay:.1s;opacity:1;transform:translateY(0)}
+.reveal-stagger.in > *:nth-child(2){transition-delay:.25s;opacity:1;transform:translateY(0)}
+.reveal-stagger.in > *:nth-child(3){transition-delay:.4s;opacity:1;transform:translateY(0)}
+.reveal-stagger.in > *:nth-child(4){transition-delay:.55s;opacity:1;transform:translateY(0)}
+.reveal-stagger.in > *:nth-child(5){transition-delay:.7s;opacity:1;transform:translateY(0)}
+.reveal-stagger.in > *:nth-child(6){transition-delay:.85s;opacity:1;transform:translateY(0)}
+
+/* ── SECTION ──────────────────────────────────── */
+section.padded{padding:120px 56px}
+.wrap{max-width:1240px;margin:0 auto}
+
+/* ── BRAND ────────────────────────────────────── */
+.brand{background:#fff;position:relative;overflow:hidden}
+.brand::before{
+  content:'';position:absolute;top:-120px;right:-160px;width:560px;height:560px;border-radius:50%;
+  background:radial-gradient(circle,var(--primary-wash),transparent 70%);z-index:0;
+}
+.brand-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:80px;align-items:center;position:relative;z-index:1}
+.brand-img{aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:#eee;position:relative}
+.brand-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.brand:hover .brand-img img{transform:scale(1.04)}
+.brand-text h2{
+  font-size:42px;font-weight:200;letter-spacing:-.7px;color:var(--primary);
+  line-height:1.3;margin:18px 0 30px;
+}
+.brand-text h2 strong{font-weight:500;color:var(--primary-soft)}
+.brand-tags{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.brand-tags span{
+  font-size:13px;letter-spacing:.8px;color:var(--primary);font-weight:500;
+  padding:7px 18px;background:var(--primary-wash);border-radius:999px;
+}
+.brand-list{list-style:none;display:grid;gap:12px}
+.brand-list li{
+  font-size:15px;color:var(--ink);font-weight:400;line-height:1.7;
+  padding-left:24px;position:relative;
+}
+.brand-list li::before{content:'';position:absolute;left:0;top:11px;width:14px;height:1px;background:var(--primary-soft)}
+
+/* ── 2-SPLIT VIDEO ────────────────────────────── */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#000}
+.dual-panel{
+  position:relative;overflow:hidden;height:78vh;min-height:620px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 0 64px 56px;cursor:pointer;
+}
+.dual-panel video{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:1;transition:transform 1.6s cubic-bezier(.2,.8,.2,1);
+  filter:brightness(.92) saturate(1.05);
+}
+.dual-panel:hover video{transform:scale(1.05)}
+.dual-panel::before{
+  content:'';position:absolute;inset:0;z-index:2;
+  background:linear-gradient(180deg,rgba(0,0,0,.0) 30%,rgba(44,26,62,.65) 100%);
+}
+.dual-text{position:relative;z-index:5;color:#fff;max-width:480px}
+.dual-text .tag{
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.8);margin-bottom:14px;display:block;
+}
+.dual-text h3{font-size:46px;font-weight:200;letter-spacing:-.5px;line-height:1.2}
+.dual-text h3 strong{font-weight:500;color:#fff}
+.dual-text p{margin-top:14px;font-size:14.5px;opacity:.9;font-weight:300;line-height:1.7}
+.dual-text .arrow{
+  display:inline-flex;align-items:center;gap:10px;margin-top:24px;
+  font-size:11px;letter-spacing:2.5px;font-weight:500;
+  border-bottom:1px solid rgba(255,255,255,.5);padding-bottom:5px;
+  transition:letter-spacing .4s, border-color .4s, gap .4s;
+}
+.dual-text .arrow .ico{width:14px;height:14px}
+.dual-panel:hover .arrow{letter-spacing:5px;border-color:#fff;gap:14px}
+
+/* ── MEN ──────────────────────────────────────── */
+.men{background:linear-gradient(180deg,var(--cream) 0%,var(--primary-wash) 100%);position:relative;overflow:hidden}
+.men::before{
+  content:'';position:absolute;bottom:-180px;left:-160px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,var(--primary-wash),transparent 70%);
+}
+.men-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;position:relative;z-index:1}
+.men-visual{position:relative;overflow:hidden;border-radius:6px;background:#fff}
+.men-visual img{width:100%;height:auto;display:block;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.men:hover .men-visual img{transform:scale(1.03)}
+.men-text h2{
+  font-size:42px;font-weight:200;letter-spacing:-.7px;color:var(--primary);
+  line-height:1.3;margin:14px 0 24px;
+}
+.men-text h2 strong{font-weight:500;color:var(--primary-soft)}
+.men-text .lede{font-size:15.5px;color:var(--ink);font-weight:400;line-height:1.85;margin-bottom:30px;max-width:540px}
+.men-spec{background:rgba(255,255,255,.7);backdrop-filter:blur(8px);border-radius:14px;padding:24px 28px;border:1px solid rgba(255,255,255,.7)}
+.men-spec dl{display:grid;grid-template-columns:120px 1fr;gap:8px 24px;padding:10px 0;border-bottom:1px dashed rgba(64,39,89,.18);align-items:baseline}
+.men-spec dl:last-of-type{border-bottom:0}
+.men-spec dt{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);font-weight:600}
+.men-spec dd{font-size:14px;color:var(--ink);font-weight:500}
+.men-price{display:flex;align-items:baseline;justify-content:space-between;margin:24px 0 0;padding:18px 4px 4px;border-top:1px solid rgba(64,39,89,.18)}
+.men-price .label{font-size:13px;color:var(--mute);letter-spacing:.5px;font-weight:500}
+.men-price .price{font-size:32px;color:var(--primary);font-weight:600;letter-spacing:-.5px}
+.btn-pill{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--primary);color:#fff;padding:15px 30px;border-radius:999px;
+  font-size:13px;letter-spacing:1px;font-weight:500;margin-top:24px;
+  transition:background .3s,transform .3s,box-shadow .3s;
+}
+.btn-pill .ico{width:16px;height:16px}
+.btn-pill:hover{background:var(--primary-deep);color:#fff;transform:translateY(-2px);box-shadow:0 10px 22px rgba(64,39,89,.3)}
+.btn-line{
+  display:inline-flex;align-items:center;gap:10px;
+  background:transparent;color:var(--primary);padding:15px 30px;border-radius:999px;
+  border:1px solid var(--primary);font-size:13px;letter-spacing:1px;font-weight:500;
+  transition:background .3s,color .3s;
+}
+.btn-line .ico{width:16px;height:16px}
+.btn-line:hover{background:var(--primary);color:#fff}
+
+/* ── ACADEMY ──────────────────────────────────── */
+.academy{background:#fff;position:relative;overflow:hidden}
+.academy::before{
+  content:'';position:absolute;top:-160px;right:-200px;width:580px;height:580px;border-radius:50%;
+  background:radial-gradient(circle,var(--primary-wash),transparent 70%);
+}
+.academy-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:stretch;position:relative;z-index:1}
+.academy-text{display:flex;flex-direction:column;justify-content:center}
+.academy-text h2{
+  font-size:50px;font-weight:200;letter-spacing:-1px;color:var(--primary);
+  line-height:1.2;margin:14px 0 28px;
+}
+.academy-text h2 strong{font-weight:500;color:var(--primary-soft)}
+.academy-list{list-style:none;display:grid;gap:12px;margin-bottom:32px}
+.academy-list li{font-size:15px;color:var(--ink);font-weight:400;padding-left:22px;position:relative;letter-spacing:.2px}
+.academy-list li::before{content:'';position:absolute;left:0;top:11px;width:12px;height:1px;background:var(--primary-soft)}
+.academy-img{position:relative;overflow:hidden;border-radius:6px;aspect-ratio:5/4;align-self:center;width:100%}
+.academy-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.academy:hover .academy-img img{transform:scale(1.04)}
+
+/* ── PRODUCTS ─────────────────────────────────── */
+.products{background:linear-gradient(180deg,var(--cream) 0%,var(--primary-wash) 100%);position:relative}
+.products-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:54px;flex-wrap:wrap;gap:24px}
+.products-head h2{font-size:46px;font-weight:200;letter-spacing:-.7px;color:var(--primary);line-height:1.25}
+.products-head h2 strong{font-weight:500;color:var(--primary-soft)}
+.slider-nav{display:flex;gap:10px}
+.slider-nav button{
+  width:48px;height:48px;border-radius:50%;border:1px solid var(--primary);
+  background:transparent;color:var(--primary);cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background .3s,color .3s;
+}
+.slider-nav button .ico{width:16px;height:16px}
+.slider-nav button:hover{background:var(--primary);color:#fff}
+.slider-nav button.flip svg{transform:scaleX(-1)}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.product{
+  background:#fff;border-radius:8px;overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s;
+}
+.product:hover{transform:translateY(-6px);box-shadow:0 22px 40px rgba(64,39,89,.14)}
+.product .pimg{aspect-ratio:4/3;overflow:hidden;background:#ddd}
+.product .pimg img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.product:hover .pimg img{transform:scale(1.06)}
+.product .pbody{padding:28px 28px 32px}
+.product h4{font-size:24px;font-weight:500;letter-spacing:-.3px;color:var(--primary);margin-bottom:8px}
+.product p{font-size:14px;color:var(--mute);line-height:1.6}
+.product .pmore{
+  display:inline-flex;align-items:center;gap:8px;margin-top:16px;
+  font-size:12px;letter-spacing:1px;color:var(--primary);font-weight:600;
+  transition:gap .3s,color .3s;
+}
+.product .pmore .ico{width:14px;height:14px}
+.product:hover .pmore{gap:14px;color:var(--primary-soft)}
+
+/* ── CTA BAND ─────────────────────────────────── */
+.cta-band{
+  text-align:center;padding:120px 24px;
+  background:linear-gradient(180deg,var(--cream),var(--primary-wash));
+  position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:'';position:absolute;left:50%;top:50%;width:800px;height:800px;
+  border-radius:50%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(255,255,255,.45),transparent 60%);
+}
+.cta-band-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.cta-band h2{font-size:46px;font-weight:200;letter-spacing:-.7px;color:var(--primary);line-height:1.25}
+.cta-band h2 strong{font-weight:500;color:var(--primary-soft)}
+.cta-band p{margin-top:18px;font-size:15.5px;color:var(--ink);font-weight:400}
+.cta-band .btn-pill{margin-top:32px;background:transparent;color:var(--primary);border:1px solid var(--primary);padding:16px 36px}
+.cta-band .btn-pill:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* ── LOCATION ─────────────────────────────────── */
+.location{background:#fff;padding:120px 56px}
+.location-head{text-align:center;margin-bottom:56px}
+.location-head h2{font-size:56px;font-weight:200;letter-spacing:6px;color:var(--primary);margin-top:12px}
+.location-head .sub{font-size:14px;color:var(--mute);letter-spacing:2px;margin-top:8px}
+.location-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:stretch;max-width:1180px;margin:0 auto}
+.location-map{aspect-ratio:4/3;overflow:hidden;border-radius:14px;border:1px solid rgba(64,39,89,.1)}
+.location-map iframe{width:100%;height:100%;border:0;filter:saturate(.9)}
+.location-info{display:flex;flex-direction:column;justify-content:center;padding:0 8px}
+.info-row{padding:18px 0;border-bottom:1px dashed rgba(64,39,89,.18);display:flex;gap:14px;align-items:flex-start}
+.info-row .ico-wrap{width:40px;height:40px;border-radius:50%;background:var(--primary-wash);color:var(--primary);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:4px}
+.info-row .ico-wrap .ico{width:18px;height:18px}
+.info-row .text .label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);margin-bottom:6px;font-weight:600}
+.info-row .text .value{font-size:15px;color:var(--ink);font-weight:400;line-height:1.6}
+.info-row .text .value strong{font-weight:600;color:var(--primary)}
+
+/* ── FOOTER ───────────────────────────────────── */
+footer{background:var(--primary-deep);color:rgba(255,255,255,.72);padding:64px 56px 32px;font-size:13px;font-weight:300;position:relative;overflow:hidden}
+footer::before{
+  content:'';position:absolute;top:-200px;right:-260px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,164,98,0),transparent 70%);
+}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;position:relative;z-index:1}
+footer h5{margin-bottom:16px;font-weight:500}
+footer h5 img{height:60px;width:auto;display:block}
+footer p{line-height:1.85;font-size:13px}
+footer .biz{margin-top:16px;font-size:11px;color:rgba(255,255,255,.45);line-height:1.7}
+footer ul{list-style:none;display:grid;gap:8px}
+footer ul a{transition:color .3s}
+footer ul a:hover{color:#fff}
+footer .copy{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);text-align:center;font-size:11px;color:rgba(255,255,255,.45)}
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width:900px){
+  .nav{padding:14px 18px}
+  .nav-menu{display:none}
+  .nav-cta-area a:first-child{display:none}
+  .float-btns{right:14px}
+  .float-btns a{width:54px;height:54px;font-size:9.5px}
+  .hero{padding:130px 18px 80px}
+  .hero-title{font-size:36px;letter-spacing:-.5px}
+  .hero-sub{font-size:14.5px}
+  .nav-logo img,.nav.scrolled .nav-logo img{height:40px}
+  section.padded,.location{padding:80px 18px}
+  .brand-grid,.men-grid,.academy-grid,.location-grid{grid-template-columns:1fr;gap:36px}
+  .dual{grid-template-columns:1fr}
+  .dual-panel{height:60vh;min-height:460px;padding:0 0 32px 24px}
+  .dual-text h3{font-size:30px}
+  .product-grid{grid-template-columns:1fr;gap:16px}
+  .brand-text h2,.men-text h2,.academy-text h2,.products-head h2,.cta-band h2{font-size:30px}
+  .location-head h2{font-size:38px;letter-spacing:2px}
+  footer .wrap{grid-template-columns:1fr;gap:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></g></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M20.5 14.5a2 2 0 0 1-2 2H8l-4 3.5v-13a2 2 0 0 1 2-2h12.5a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-7.4-7-12a7 7 0 0 1 14 0c0 4.6-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M21 16.5v3a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6 19.6 19.6 0 0 1-3-8.6A2 2 0 0 1 3.3 2h3A2 2 0 0 1 8.3 3.7c.1 1 .4 2 .7 3a2 2 0 0 1-.4 2L7.3 10a16 16 0 0 0 6 6l1.4-1.3a2 2 0 0 1 2-.4c1 .3 2 .6 3 .7A2 2 0 0 1 21 16.5z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ── NAV ───────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo" aria-label="VL Visual Light">
+    <img src="../브이엘 로고.png" alt="VL Visual Light · Image Consulting">
+  </a>
+  <div class="nav-menu">
+    <a href="#brand">브이엘소개</a>
+    <a href="#men">맨즈컨설팅</a>
+    <a href="#products">프로그램</a>
+    <a href="#academy">아카데미</a>
+    <a href="#location">예약하기</a>
+  </div>
+  <div class="nav-cta-area">
+    <a href="#">상담</a>
+    <a href="#location" class="solid">예약</a>
+  </div>
+</nav>
+
+<!-- ── FLOATING ────────────────────────────────── -->
+<div class="float-btns">
+  <a href="#"><span class="ico"><svg><use href="#i-chat"/></svg></span><span>상담</span></a>
+  <a href="#location" class="primary"><span class="ico"><svg><use href="#i-calendar"/></svg></span><span>예약</span></a>
+</div>
+
+<!-- ── HERO ────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-blob"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">VL · Personal Color & Image Consulting</p>
+    <h1 class="hero-title">컬러에서 끝나지 않습니다.<br><strong>스타일</strong>로 완성됩니다.</h1>
+    <p class="hero-sub">퍼스널컬러 · 스타일링 · 맨즈 — 1:1 맞춤 컨설팅</p>
+    <p class="hero-en">We Design Your Color, Style, And Confidence.<br>From Diagnosis To Wardrobe — VL Crafts Your Signature Image.</p>
+    <a href="#location" class="hero-cta"><span class="ico"><svg><use href="#i-calendar"/></svg></span>예약하기</a>
+  </div>
+</section>
+
+<!-- ── BRAND ────────────────────────────────── -->
+<section class="brand padded" id="brand">
+  <div class="wrap brand-grid">
+    <div class="brand-img reveal">
+      <img src="../브랜드.jfif" alt="VL 브랜드">
+    </div>
+    <div class="brand-text reveal-stagger">
+      <p class="eyebrow">Brand Philosophy</p>
+      <h2>컬러에서 끝나지 않습니다.<br><strong>스타일</strong>로 완성됩니다.</h2>
+      <div class="brand-tags">
+        <span>퍼스널컬러</span><span>스타일링</span><span>맨즈</span>
+      </div>
+      <ul class="brand-list">
+        <li>1:1 맞춤 컨설팅</li>
+        <li>실용적이고 세련된 스타일 제안</li>
+        <li>남성 이미지 메이킹 전문 (맨즈 특화)</li>
+        <li>나만의 분위기를 찾아주는 컬러 진단</li>
+      </ul>
+      <a href="#products" class="btn-pill" style="margin-top:30px">바로가기 <span class="ico"><svg><use href="#i-arrow"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── 2-SPLIT VIDEO ─────────────────────────── -->
+<section class="dual reveal">
+  <div class="dual-panel">
+    <video autoplay muted loop playsinline>
+      <source src="../여자영상.mp4" type="video/mp4">
+    </video>
+    <div class="dual-text">
+      <span class="tag">For Women</span>
+      <h3>Spread Your <strong>Color</strong></h3>
+      <p>당신의 분위기를 찾아주는 1:1 맞춤 퍼스널컬러 진단.<br>나에게 가장 빛나는 색을 만나는 시간.</p>
+      <span class="arrow">VIEW MORE <span class="ico"><svg><use href="#i-arrow"/></svg></span></span>
+    </div>
+  </div>
+  <div class="dual-panel">
+    <video autoplay muted loop playsinline>
+      <source src="../남자영상.mp4" type="video/mp4">
+    </video>
+    <div class="dual-text">
+      <span class="tag">For Men</span>
+      <h3>Shape Your <strong>Style</strong></h3>
+      <p>남성 이미지 메이킹 전문, 맨즈 특화 컨설팅.<br>실용적이고 세련된 스타일을 완성합니다.</p>
+      <span class="arrow">VIEW MORE <span class="ico"><svg><use href="#i-arrow"/></svg></span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ── MEN ─────────────────────────────────── -->
+<section class="men padded" id="men">
+  <div class="wrap men-grid">
+    <div class="men-visual reveal">
+      <img src="../후기.png" alt="남성 컨설팅 Before & After">
+    </div>
+    <div class="men-text reveal-stagger">
+      <p class="eyebrow">Signature For Men</p>
+      <h2>남자를 위해 설계된,<br><strong>남자만을 위한 컨설팅.</strong></h2>
+      <p class="lede">메이크업이 아닌 스타일링 중심으로 설계된 남성 전용 프리미엄 코스. 셔츠 · 수트 · 캐주얼 · 액세서리까지 남자의 실전 옷장에 바로 적용됩니다.</p>
+      <div class="men-spec">
+        <dl><dt>소요 시간</dt><dd>약 120분 · 프라이빗 1:1</dd></dl>
+        <dl><dt>진단</dt><dd>16계절 드레이핑 + 8타입 심화</dd></dl>
+        <dl><dt>스타일링</dt><dd>셔츠 · 수트 · 캐주얼 컬러 매칭</dd></dl>
+        <dl><dt>얼굴형 · 파츠</dt><dd>ICPA 기준 디테일 분석</dd></dl>
+        <dl><dt>결과물</dt><dd>PDF 진단서 + 남성 팔레트북</dd></dl>
+        <dl><dt>애프터</dt><dd>쇼핑 가이드 + 1회 문자 Q&amp;A</dd></dl>
+        <div class="men-price">
+          <span class="label">남성 프리미엄 컨설팅</span>
+          <span class="price">130,000<span style="font-size:18px;font-weight:500">원</span></span>
+        </div>
+      </div>
+      <a href="#" class="btn-pill">코스 자세히 보기 <span class="ico"><svg><use href="#i-arrow"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACADEMY ─────────────────────────────── -->
+<section class="academy padded" id="academy">
+  <div class="wrap academy-grid">
+    <div class="academy-text reveal-stagger">
+      <p class="eyebrow">VL Academy</p>
+      <h2>전문가 <strong>교육과정</strong></h2>
+      <p style="font-size:15.5px;color:var(--ink);font-weight:400;margin-bottom:24px;line-height:1.85">
+        브이엘 아카데미는 단순 자격 취득을 넘어,<br>현장에서 통하는 맞춤 전문가 양성에 집중합니다.
+      </p>
+      <ul class="academy-list">
+        <li>일본 ICPA 얼굴형 진단 1급 자격 보유</li>
+        <li>의류 브랜드 실무 15년 경력</li>
+        <li>골격 진단 1급 &amp; 한국색채 협회 인증 강사</li>
+        <li>맞춤 전문가 교육과정 운영</li>
+      </ul>
+      <a href="#" class="btn-line" style="margin-top:24px">바로가기 <span class="ico"><svg><use href="#i-arrow"/></svg></span></a>
+    </div>
+    <div class="academy-img reveal">
+      <img src="../아카데미.jfif" alt="아카데미 강의">
+    </div>
+  </div>
+</section>
+
+<!-- ── PRODUCTS ────────────────────────────── -->
+<section class="products padded" id="products">
+  <div class="wrap">
+    <div class="products-head reveal">
+      <h2>당신만의 <strong>색</strong>을 찾는 시간<br><span style="font-size:18px;color:var(--mute);letter-spacing:.5px;font-weight:400">나만의 분위기를 찾아주는 컬러 진단</span></h2>
+      <div class="slider-nav">
+        <button class="flip" aria-label="prev"><span class="ico"><svg><use href="#i-arrow"/></svg></span></button>
+        <button aria-label="next"><span class="ico"><svg><use href="#i-arrow"/></svg></span></button>
+      </div>
+    </div>
+    <div class="product-grid reveal-stagger">
+      <a href="#" class="product">
+        <div class="pimg"><img src="../퍼스널.jfif" alt="퍼스널 컬러 진단"></div>
+        <div class="pbody">
+          <h4>퍼스널 컬러 진단</h4>
+          <p>1:1 / 2:1 맞춤 진단</p>
+          <span class="pmore">자세히 보기 <span class="ico"><svg><use href="#i-arrow"/></svg></span></span>
+        </div>
+      </a>
+      <a href="#" class="product">
+        <div class="pimg"><img src="../웨딩.jfif" alt="웨딩 컨설팅"></div>
+        <div class="pbody">
+          <h4>웨딩 컨설팅</h4>
+          <p>신부 / 신랑 / 커플 맞춤 컨설팅</p>
+          <span class="pmore">자세히 보기 <span class="ico"><svg><use href="#i-arrow"/></svg></span></span>
+        </div>
+      </a>
+      <a href="#" class="product">
+        <div class="pimg"><img src="../면접.jfif" alt="면접·프로필·소개팅"></div>
+        <div class="pbody">
+          <h4>면접 · 프로필 · 소개팅</h4>
+          <p>면접 / 프로필 / 소개팅 / 대리쇼핑<br>올인원 맞춤 컨설팅</p>
+          <span class="pmore">자세히 보기 <span class="ico"><svg><use href="#i-arrow"/></svg></span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BAND ─────────────────────────────── -->
+<section class="cta-band reveal">
+  <div class="cta-band-inner">
+    <h2>We Find Your Own <strong>Color &amp; Style</strong></h2>
+    <p>브이엘과 함께 잠재되어 있던 나만의 분위기를 피워 보세요.</p>
+    <a href="#location" class="btn-pill"><span class="ico"><svg><use href="#i-calendar"/></svg></span>예약하기</a>
+  </div>
+</section>
+
+<!-- ── LOCATION ─────────────────────────────── -->
+<section class="location" id="location">
+  <div class="wrap">
+    <div class="location-head reveal">
+      <p class="eyebrow">Visit Us</p>
+      <h2>LOCATION</h2>
+      <p class="sub">송도 · 1:1 프라이빗 살롱</p>
+    </div>
+    <div class="location-grid reveal-stagger">
+      <div class="location-map">
+        <iframe src="https://maps.google.com/maps?q=%EC%9D%B8%EC%B2%9C%20%EC%97%B0%EC%88%98%EA%B5%AC%20%EC%86%A1%EB%8F%84%EA%B3%BC%ED%95%99%EB%A1%9C%2070&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe>
+      </div>
+      <div class="location-info">
+        <div class="info-row">
+          <span class="ico-wrap"><span class="ico"><svg><use href="#i-pin"/></svg></span></span>
+          <div class="text">
+            <div class="label">Address</div>
+            <div class="value"><strong>인천 연수구 송도과학로 70</strong><br>송도AT센터 1동 (오피스동) 2314호</div>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="ico-wrap"><span class="ico"><svg><use href="#i-phone"/></svg></span></span>
+          <div class="text">
+            <div class="label">Tel</div>
+            <div class="value"><strong>0507 . 1369 . 8334</strong></div>
+          </div>
+        </div>
+        <div class="info-row">
+          <span class="ico-wrap"><span class="ico"><svg><use href="#i-clock"/></svg></span></span>
+          <div class="text">
+            <div class="label">Opening Hours</div>
+            <div class="value"><strong>매일 AM 10:00 ~ PM 19:00</strong></div>
+          </div>
+        </div>
+        <a href="#" class="btn-pill" style="margin-top:30px"><span class="ico"><svg><use href="#i-calendar"/></svg></span>예약하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ───────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div>
+      <h5><img src="../브이엘 로고.png" alt="VL Visual Light"></h5>
+      <p>인천 연수구 송도과학로 70<br>송도AT센터 1동 (오피스동) 2314호<br>TEL · 0507-1369-8334<br>매일 10:00 ~ 19:00 · 저녁 예약 별도 문의</p>
+      <p class="biz">© VL · Value Light. All rights reserved.</p>
+    </div>
+    <div>
+      <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:16px;font-weight:500">Programs</p>
+      <ul>
+        <li><a href="#">퍼스널 컬러 진단</a></li>
+        <li><a href="#">남성 프리미엄 컨설팅</a></li>
+        <li><a href="#">웨딩 컨설팅</a></li>
+        <li><a href="#">면접 / 프로필 / 소개팅</a></li>
+        <li><a href="#">쇼핑 동행 · 대리쇼핑</a></li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#fff;margin-bottom:16px;font-weight:500">Follow</p>
+      <ul>
+        <li><a href="#">Instagram @value_light_</a></li>
+        <li><a href="#">Naver Blog</a></li>
+        <li><a href="#">Kakao Channel</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">© 2026 VL Personal. All rights reserved.</div>
+</footer>
+
+<script>
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+  });
+},{threshold:.15,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal,.reveal-stagger').forEach(el=>io.observe(el));
+
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>40)nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+},{passive:true});
+</script>
+</body>
+</html>
