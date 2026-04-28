@@ -107,17 +107,32 @@ nav,footer,section{position:relative;z-index:1}
   min-height:88vh;
   display:flex;align-items:center;justify-content:center;
 }
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background-image:url('personal.jpg');
+.hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-slide{
+  position:absolute;inset:0;
   background-size:cover;background-position:center;
   filter:saturate(.85) brightness(1.02);
-  animation:heroZoom 18s ease-out forwards;
+  opacity:0;visibility:hidden;
+  transition:opacity 1.6s cubic-bezier(.5,0,.2,1);
 }
-@keyframes heroZoom{
-  from{transform:scale(1.08)}
-  to{transform:scale(1)}
+.hero-slide.active{
+  opacity:1;visibility:visible;
+  animation:kenBurnsHero 7s ease-out forwards;
 }
+@keyframes kenBurnsHero{
+  from{transform:scale(1.06)}
+  to{transform:scale(1.14)}
+}
+/* slide indicator dots */
+.hero-dots{
+  position:absolute;left:50%;bottom:36px;transform:translateX(-50%);z-index:4;
+  display:flex;gap:14px;
+}
+.hero-dots button{
+  width:28px;height:2px;border:0;padding:0;cursor:pointer;
+  background:rgba(255,255,255,.35);transition:background .4s,width .4s;
+}
+.hero-dots button.active{background:#fff;width:44px}
 .hero-overlay{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg, rgba(28,20,36,.42) 0%, rgba(28,20,36,.38) 50%, rgba(28,20,36,.5) 100%);
@@ -191,10 +206,10 @@ section.padded{padding:120px 56px}
 .brand-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
 .brand:hover .brand-img img{transform:scale(1.04)}
 .brand-text h2{
-  font-size:42px;font-weight:200;letter-spacing:-.7px;color:var(--primary);
+  font-size:42px;font-weight:700;letter-spacing:-1.2px;color:var(--primary);
   line-height:1.3;margin:18px 0 30px;
 }
-.brand-text h2 strong{font-weight:500;color:var(--primary-soft)}
+.brand-text h2 strong{font-weight:800;color:var(--primary-soft)}
 .brand-tags{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
 .brand-tags span{
   font-size:13px;letter-spacing:.8px;color:var(--primary);font-weight:500;
@@ -222,15 +237,15 @@ section.padded{padding:120px 56px}
 .dual-panel:hover video{transform:scale(1.05)}
 .dual-panel::before{
   content:'';position:absolute;inset:0;z-index:2;
-  background:linear-gradient(180deg,rgba(0,0,0,.0) 30%,rgba(44,26,62,.65) 100%);
+  background:linear-gradient(180deg,rgba(0,0,0,.0) 40%,rgba(0,0,0,.38) 100%);
 }
 .dual-text{position:relative;z-index:5;color:#fff;max-width:480px}
 .dual-text .tag{
   font-size:12px;letter-spacing:3px;text-transform:uppercase;font-weight:600;
   color:rgba(255,255,255,.8);margin-bottom:14px;display:block;
 }
-.dual-text h3{font-size:46px;font-weight:200;letter-spacing:-.5px;line-height:1.2}
-.dual-text h3 strong{font-weight:500;color:#fff}
+.dual-text h3{font-size:46px;font-weight:700;letter-spacing:-1px;line-height:1.2}
+.dual-text h3 strong{font-weight:800;color:#fff}
 .dual-text p{margin-top:14px;font-size:14.5px;opacity:.9;font-weight:300;line-height:1.7}
 .dual-text .arrow{
   display:inline-flex;align-items:center;gap:10px;margin-top:24px;
@@ -252,10 +267,10 @@ section.padded{padding:120px 56px}
 .men-visual img{width:100%;height:auto;display:block;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
 .men:hover .men-visual img{transform:scale(1.03)}
 .men-text h2{
-  font-size:42px;font-weight:200;letter-spacing:-.7px;color:var(--primary);
+  font-size:42px;font-weight:700;letter-spacing:-1.2px;color:var(--primary);
   line-height:1.3;margin:14px 0 24px;
 }
-.men-text h2 strong{font-weight:500;color:var(--primary-soft)}
+.men-text h2 strong{font-weight:800;color:var(--primary-soft)}
 .men-text .lede{font-size:15.5px;color:var(--ink);font-weight:400;line-height:1.85;margin-bottom:30px;max-width:540px}
 .men-spec{background:rgba(255,255,255,.7);backdrop-filter:blur(8px);border-radius:14px;padding:24px 28px;border:1px solid rgba(255,255,255,.7)}
 .men-spec dl{display:grid;grid-template-columns:120px 1fr;gap:8px 24px;padding:10px 0;border-bottom:1px dashed rgba(64,39,89,.18);align-items:baseline}
@@ -291,10 +306,10 @@ section.padded{padding:120px 56px}
 .academy-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:stretch;position:relative;z-index:1}
 .academy-text{display:flex;flex-direction:column;justify-content:center}
 .academy-text h2{
-  font-size:50px;font-weight:200;letter-spacing:-1px;color:var(--primary);
+  font-size:50px;font-weight:700;letter-spacing:-1.5px;color:var(--primary);
   line-height:1.2;margin:14px 0 28px;
 }
-.academy-text h2 strong{font-weight:500;color:var(--primary-soft)}
+.academy-text h2 strong{font-weight:800;color:var(--primary-soft)}
 .academy-list{list-style:none;display:grid;gap:12px;margin-bottom:32px}
 .academy-list li{font-size:15px;color:var(--ink);font-weight:400;padding-left:22px;position:relative;letter-spacing:.2px}
 .academy-list li::before{content:'';position:absolute;left:0;top:11px;width:12px;height:1px;background:var(--primary-soft)}
@@ -305,8 +320,8 @@ section.padded{padding:120px 56px}
 /* ── PRODUCTS ─────────────────────────────────── */
 .products{background:linear-gradient(180deg,var(--cream) 0%,var(--primary-wash) 100%);position:relative}
 .products-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:54px;flex-wrap:wrap;gap:24px}
-.products-head h2{font-size:46px;font-weight:200;letter-spacing:-.7px;color:var(--primary);line-height:1.25}
-.products-head h2 strong{font-weight:500;color:var(--primary-soft)}
+.products-head h2{font-size:46px;font-weight:700;letter-spacing:-1.2px;color:var(--primary);line-height:1.25}
+.products-head h2 strong{font-weight:800;color:var(--primary-soft)}
 .slider-nav{display:flex;gap:10px}
 .slider-nav button{
   width:48px;height:48px;border-radius:50%;border:1px solid var(--primary);
@@ -350,8 +365,8 @@ section.padded{padding:120px 56px}
   background:radial-gradient(circle,rgba(255,255,255,.45),transparent 60%);
 }
 .cta-band-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
-.cta-band h2{font-size:46px;font-weight:200;letter-spacing:-.7px;color:var(--primary);line-height:1.25}
-.cta-band h2 strong{font-weight:500;color:var(--primary-soft)}
+.cta-band h2{font-size:46px;font-weight:700;letter-spacing:-1.2px;color:var(--primary);line-height:1.25}
+.cta-band h2 strong{font-weight:800;color:var(--primary-soft)}
 .cta-band p{margin-top:18px;font-size:15.5px;color:var(--ink);font-weight:400}
 .cta-band .btn-pill{margin-top:32px;background:transparent;color:var(--primary);border:1px solid var(--primary);padding:16px 36px}
 .cta-band .btn-pill:hover{background:var(--primary);color:#fff;border-color:var(--primary)}
@@ -359,7 +374,7 @@ section.padded{padding:120px 56px}
 /* ── LOCATION ─────────────────────────────────── */
 .location{background:#fff;padding:120px 56px}
 .location-head{text-align:center;margin-bottom:56px}
-.location-head h2{font-size:56px;font-weight:200;letter-spacing:6px;color:var(--primary);margin-top:12px}
+.location-head h2{font-size:56px;font-weight:800;letter-spacing:5px;color:var(--primary);margin-top:12px}
 .location-head .sub{font-size:14px;color:var(--mute);letter-spacing:2px;margin-top:8px}
 .location-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:stretch;max-width:1180px;margin:0 auto}
 .location-map{aspect-ratio:4/3;overflow:hidden;border-radius:14px;border:1px solid rgba(64,39,89,.1)}
@@ -451,9 +466,20 @@ footer .copy{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,
 
 <!-- ── HERO ────────────────────────────────────── -->
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-slides">
+    <div class="hero-slide active" data-i="0" style="background-image:url('vl1.jpg')"></div>
+    <div class="hero-slide" data-i="1" style="background-image:url('vl2.jpg')"></div>
+    <div class="hero-slide" data-i="2" style="background-image:url('vl5.jpg')"></div>
+    <div class="hero-slide" data-i="3" style="background-image:url('interview.jpg')"></div>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-blob"></div>
+  <div class="hero-dots" aria-hidden="true">
+    <button data-i="0" class="active" aria-label="slide 1"></button>
+    <button data-i="1" aria-label="slide 2"></button>
+    <button data-i="2" aria-label="slide 3"></button>
+    <button data-i="3" aria-label="slide 4"></button>
+  </div>
   <div class="hero-inner">
     <p class="hero-eyebrow">VL · Personal Color & Image Consulting</p>
     <h1 class="hero-title">컬러에서 끝나지 않습니다.<br><strong>스타일</strong>로 완성됩니다.</h1>
@@ -490,23 +516,19 @@ footer .copy{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,
 <section class="dual reveal">
   <div class="dual-panel">
     <video autoplay muted loop playsinline>
-      <source src="women.mp4" type="video/mp4">
+      <source src="women1.mp4" type="video/mp4">
     </video>
     <div class="dual-text">
-      <span class="tag">For Women</span>
-      <h3>Spread Your <strong>Color</strong></h3>
-      <p>당신의 분위기를 찾아주는 1:1 맞춤 퍼스널컬러 진단.<br>나에게 가장 빛나는 색을 만나는 시간.</p>
+      <h3>퍼스널컬러</h3>
       <span class="arrow">VIEW MORE <span class="ico"><svg><use href="#i-arrow"/></svg></span></span>
     </div>
   </div>
   <div class="dual-panel">
     <video autoplay muted loop playsinline>
-      <source src="men.mp4" type="video/mp4">
+      <source src="men1.mp4" type="video/mp4">
     </video>
     <div class="dual-text">
-      <span class="tag">For Men</span>
-      <h3>Shape Your <strong>Style</strong></h3>
-      <p>남성 이미지 메이킹 전문, 맨즈 특화 컨설팅.<br>실용적이고 세련된 스타일을 완성합니다.</p>
+      <h3>맨즈 컨설팅</h3>
       <span class="arrow">VIEW MORE <span class="ico"><svg><use href="#i-arrow"/></svg></span></span>
     </div>
   </div>
@@ -521,14 +543,11 @@ footer .copy{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,
     <div class="men-text reveal-stagger">
       <p class="eyebrow">Signature For Men</p>
       <h2>남자를 위해 설계된,<br><strong>남자만을 위한 컨설팅.</strong></h2>
-      <p class="lede">메이크업이 아닌 스타일링 중심으로 설계된 남성 전용 프리미엄 코스. 셔츠 · 수트 · 캐주얼 · 액세서리까지 남자의 실전 옷장에 바로 적용됩니다.</p>
+      <p class="lede">스타일링 중심의 남성 전용 프리미엄 코스. 실전 옷장에 바로 적용됩니다.</p>
       <div class="men-spec">
         <dl><dt>소요 시간</dt><dd>약 120분 · 프라이빗 1:1</dd></dl>
-        <dl><dt>진단</dt><dd>16계절 드레이핑 + 8타입 심화</dd></dl>
         <dl><dt>스타일링</dt><dd>셔츠 · 수트 · 캐주얼 컬러 매칭</dd></dl>
-        <dl><dt>얼굴형 · 파츠</dt><dd>ICPA 기준 디테일 분석</dd></dl>
         <dl><dt>결과물</dt><dd>PDF 진단서 + 남성 팔레트북</dd></dl>
-        <dl><dt>애프터</dt><dd>쇼핑 가이드 + 1회 문자 Q&amp;A</dd></dl>
         <div class="men-price">
           <span class="label">남성 프리미엄 컨설팅</span>
           <span class="price">130,000<span style="font-size:18px;font-weight:500">원</span></span>
@@ -598,15 +617,6 @@ footer .copy{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,
         </div>
       </a>
     </div>
-  </div>
-</section>
-
-<!-- ── CTA BAND ─────────────────────────────── -->
-<section class="cta-band reveal">
-  <div class="cta-band-inner">
-    <h2>We Find Your Own <strong>Color &amp; Style</strong></h2>
-    <p>브이엘과 함께 잠재되어 있던 나만의 분위기를 피워 보세요.</p>
-    <a href="#location" class="btn-pill"><span class="ico"><svg><use href="#i-calendar"/></svg></span>예약하기</a>
   </div>
 </section>
 
@@ -693,6 +703,27 @@ window.addEventListener('scroll',()=>{
   if(window.scrollY>40)nav.classList.add('scrolled');
   else nav.classList.remove('scrolled');
 },{passive:true});
+
+// Hero auto slideshow
+(function(){
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dots button');
+  if(!slides.length) return;
+  let i = 0, timer;
+  function show(n){
+    slides[i].classList.remove('active');
+    dots[i] && dots[i].classList.remove('active');
+    i = (n + slides.length) % slides.length;
+    slides[i].classList.add('active');
+    dots[i] && dots[i].classList.add('active');
+  }
+  function start(){timer = setInterval(()=>show(i+1), 5000)}
+  function stop(){clearInterval(timer)}
+  dots.forEach(d => d.addEventListener('click', () => {
+    stop(); show(parseInt(d.dataset.i)); start();
+  }));
+  start();
+})();
 </script>
 </body>
 </html>
