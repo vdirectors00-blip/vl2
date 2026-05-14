@@ -151,6 +151,15 @@ a{color:inherit;text-decoration:none}
 
 /* ── SPLIT (image + text) ──────────────────────── */
 .split{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+.split.flip{grid-template-columns:1.25fr 1fr;min-height:68vh}
+.split.flip .s-img{background:transparent;padding:0;position:relative;overflow:hidden}
+.expert-track{display:flex;width:100%;height:100%;transition:transform .9s cubic-bezier(.5,0,.2,1)}
+.expert-slide{flex:0 0 100%;width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
+.expert-slide img{max-height:60vh;width:auto;height:auto;object-fit:contain;display:block;transition:none}
+.split.flip .s-img:hover .expert-slide img{transform:none}
+.slide-dots{position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:10px;z-index:5}
+.slide-dots button{width:24px;height:2px;background:rgba(0,0,0,.25);border:0;padding:0;cursor:pointer;transition:background .35s,width .35s}
+.slide-dots button.active{background:#000;width:36px}
 .split .s-img{position:relative;overflow:hidden;background:#0a0a0a}
 .split .s-img img,.split .s-img video{width:100%;height:100%;object-fit:cover;transition:transform 1.6s cubic-bezier(.2,.8,.2,1)}
 .split:hover .s-img img,.split:hover .s-img video{transform:scale(1.04)}
@@ -328,7 +337,7 @@ footer .copy{
 <!-- ── HERO ─────────────────────────────────── -->
 <section class="hero">
   <video autoplay muted loop playsinline>
-    <source src="vl_outro.mp4" type="video/mp4">
+    <source src="vl.mp4" type="video/mp4">
   </video>
   <div class="scroll-indicator">SCROLL</div>
 </section>
@@ -406,7 +415,18 @@ footer .copy{
 
 <!-- ── 전문가 교육과정 ─────────────────────────── -->
 <section class="split flip reveal">
-  <div class="s-img"><img src="academy.jpg" alt="VL Academy"></div>
+  <div class="s-img">
+    <div class="expert-track">
+      <div class="expert-slide"><img src="expert1.jpg" alt="VL Academy 1"></div>
+      <div class="expert-slide"><img src="expert2.jpg" alt="VL Academy 2"></div>
+      <div class="expert-slide"><img src="expert3.jpg" alt="VL Academy 3"></div>
+    </div>
+    <div class="slide-dots" aria-hidden="true">
+      <button data-i="0" class="active" aria-label="slide 1"></button>
+      <button data-i="1" aria-label="slide 2"></button>
+      <button data-i="2" aria-label="slide 3"></button>
+    </div>
+  </div>
   <div class="s-text">
     <span class="section-eyebrow">VL Academy</span>
     <h2>전문가 교육과정</h2>
@@ -424,7 +444,7 @@ footer .copy{
 <section class="reserve reveal">
   <div class="reserve-inner">
     <span class="section-eyebrow">Reservation</span>
-    <h2>인천 송도, 1:1 프라이빗 토탈 컨설팅<br>지금 예약하세요.</h2>
+    <h2>1:1 프라이빗 토탈 컨설팅<br>지금 예약하세요.</h2>
     <p>1:1 맞춤 퍼스널컬러 진단부터 옷장 코디까지<br>실전컨설팅을 통해 당신만의 시그니처 이미지를 완성합니다.</p>
     <a href="javascript:void(0)" class="btn-solid"><span class="ico"><svg><use href="#i-calendar"/></svg></span>예약하기</a>
     <div class="reserve-meta">
@@ -491,6 +511,26 @@ window.addEventListener('scroll',()=>{
   if(window.scrollY>40)nav.classList.add('scrolled');
   else nav.classList.remove('scrolled');
 },{passive:true});
+
+// Academy expert slider (horizontal auto-slide)
+(function(){
+  const track = document.querySelector('.expert-track');
+  const dots = document.querySelectorAll('.slide-dots button');
+  if(!track) return;
+  const n = track.children.length;
+  let i = 0, timer;
+  function go(idx){
+    i = (idx + n) % n;
+    track.style.transform = `translateX(-${i*100}%)`;
+    dots.forEach(d => d.classList.toggle('active', parseInt(d.dataset.i) === i));
+  }
+  function start(){timer = setInterval(()=>go(i+1), 4500)}
+  function stop(){clearInterval(timer)}
+  dots.forEach(d => d.addEventListener('click', () => {
+    stop(); go(parseInt(d.dataset.i)); start();
+  }));
+  start();
+})();
 </script>
 </body>
 </html>
