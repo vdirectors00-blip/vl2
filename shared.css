@@ -66,8 +66,8 @@ a{color:inherit;text-decoration:none}
 /* SECTION COMMONS */
 .section{padding:100px 32px}
 .section-head{text-align:center;max-width:880px;margin:0 auto 64px}
-.section-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;font-weight:700;color:var(--ink);position:relative;padding-bottom:14px;display:inline-block;margin-bottom:22px}
-.section-eyebrow::after{content:'';position:absolute;left:50%;bottom:0;width:32px;height:1px;background:var(--ink);transform:translateX(-50%)}
+.section-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;font-weight:700;color:var(--ink);position:relative;padding-bottom:0;display:inline-block;margin-bottom:18px}
+.section-eyebrow::after{display:none}
 .section-head h2{font-size:48px;font-weight:800;letter-spacing:-1px;line-height:1.2;color:var(--ink)}
 .section-head p.sub{margin-top:18px;font-size:15px;color:var(--mute);line-height:1.85;letter-spacing:.3px}
 .wrap{max-width:1280px;margin:0 auto}
