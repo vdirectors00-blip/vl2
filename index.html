@@ -49,18 +49,18 @@ a{color:inherit;text-decoration:none}
   background:rgba(255,255,255,.96);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
-  display:flex;flex-direction:column;align-items:center;
-  padding:22px 32px 16px;gap:14px;
-  transition:padding .35s ease,gap .35s ease;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 40px;gap:16px 32px;flex-wrap:wrap;
+  transition:padding .35s ease;
 }
-.nav.scrolled{padding:14px 32px 12px;gap:10px}
-.nav-logo{display:inline-flex;align-items:center;justify-content:center}
-.nav-logo img{height:78px;width:auto;display:block;transition:height .35s ease}
-.nav.scrolled .nav-logo img{height:58px}
-.nav-menu{display:flex;gap:36px;align-items:center;flex-wrap:wrap;justify-content:center}
+.nav.scrolled{padding:12px 40px}
+.nav-logo{flex:0 0 auto;display:inline-flex;align-items:center}
+.nav-logo img{height:62px;width:auto;display:block;transition:height .35s ease}
+.nav.scrolled .nav-logo img{height:48px}
+.nav-menu{display:flex;gap:30px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .nav-menu a{
   font-size:11.5px;letter-spacing:2.5px;text-transform:uppercase;
-  font-weight:600;color:var(--ink);transition:opacity .3s;
+  font-weight:600;color:var(--ink);transition:opacity .3s;white-space:nowrap;
 }
 .nav-menu a:hover{opacity:.55}
 
@@ -290,9 +290,10 @@ footer .copy{
 /* ── RESPONSIVE ───────────────────────────────── */
 @media (max-width:900px){
   .promo{font-size:11px;padding:8px 16px;letter-spacing:.5px}
-  .nav{padding:12px 16px;grid-template-columns:auto 1fr auto}
-  .nav-left a:nth-child(n+2),.nav-right a:nth-child(1){display:none}
-  .nav-logo img,.nav.scrolled .nav-logo img{height:34px}
+  .nav{padding:12px 18px;gap:10px 16px}
+  .nav-logo img,.nav.scrolled .nav-logo img{height:46px}
+  .nav-menu{width:100%;justify-content:flex-start;gap:12px 18px;border-top:1px solid var(--line);margin-top:2px;padding-top:12px}
+  .nav-menu a{font-size:10.5px;letter-spacing:1.5px}
   .hero{height:88vh}
   .hero-title{font-size:38px;letter-spacing:-1px;margin-bottom:24px}
   .hero-eyebrow{font-size:10px;letter-spacing:4px;margin-bottom:20px}
@@ -319,7 +320,30 @@ footer .copy{
   .reserve{padding:80px 16px}
   .reserve h2{font-size:30px;letter-spacing:-.5px}
   .reserve-meta{gap:32px}
-  footer .f-wrap{grid-template-columns:1fr;gap:32px}
+  footer .f-wrap{grid-template-columns:1fr 1fr;gap:32px 24px}
+  footer .copy{flex-direction:column;text-align:center;gap:8px}
+}
+@media (max-width:1024px){
+  .nav{padding:14px 24px}
+  .nav-menu{gap:20px}
+}
+@media (max-width:480px){
+  .nav{padding:10px 14px}
+  .nav-logo img,.nav.scrolled .nav-logo img{height:40px}
+  .nav-menu{gap:9px 12px;padding-top:10px}
+  .nav-menu a{font-size:9.5px;letter-spacing:1px}
+  .hero{height:78vh;min-height:480px}
+  .hero-title{font-size:30px;margin-bottom:18px}
+  .editorial-text h2{font-size:26px}
+  .split h2,.tiles-head h2,.statement h2,.reserve h2{font-size:25px}
+  .statement{padding:60px 14px}
+  .reserve-meta{gap:22px}
+  footer .f-wrap{grid-template-columns:1fr;gap:26px}
+}
+@media (max-width:360px){
+  .nav-menu a{font-size:9px;letter-spacing:.5px}
+  .nav-logo img,.nav.scrolled .nav-logo img{height:36px}
+  .hero-title{font-size:26px}
 }
 </style>
 </head>
