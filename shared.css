@@ -106,7 +106,7 @@ footer .copy{margin-top:56px;padding-top:28px;border-top:1px solid rgba(255,255,
 @media (max-width:768px){
   .nav{padding:12px 18px;gap:10px 16px}
   .nav-logo img,.nav.scrolled .nav-logo img{height:46px}
-  .nav-menu{width:100%;justify-content:flex-start;gap:12px 18px;border-top:1px solid var(--line);margin-top:2px;padding-top:12px}
+  .nav-menu{width:100%;justify-content:center;gap:10px 18px;border-top:1px solid var(--line);margin-top:2px;padding-top:12px}
   .nav-menu a{font-size:10.5px;letter-spacing:1.5px}
   .nav-menu a.current::after{bottom:-5px}
   .page-hero{height:42vh;min-height:260px}
