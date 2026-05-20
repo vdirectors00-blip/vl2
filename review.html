@@ -27,7 +27,7 @@
 .stat .v{font-size:42px;font-weight:800;letter-spacing:-.5px;line-height:1;display:block;margin-bottom:8px}
 .stat .l{font-size:11px;letter-spacing:2.5px;color:var(--mute);text-transform:uppercase;font-weight:700}
 
-.filter-bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:32px;border-bottom:1px solid var(--line);position:sticky;top:160px;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);z-index:5}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:32px;border-bottom:1px solid var(--line);background:#fff;position:static}
 .filter-bar button{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;padding:10px 22px;border:1px solid var(--line);background:#fff;cursor:pointer;color:#444;transition:all .3s}
 .filter-bar button.active,.filter-bar button:hover{background:#000;color:#fff;border-color:#000}
 
@@ -53,7 +53,7 @@
   .review-intro h2{font-size:26px}
   .stats{gap:28px;padding-top:28px}
   .stat .v{font-size:28px}
-  .filter-bar{top:140px;padding:14px;gap:6px}
+  .filter-bar{padding:14px;gap:6px}
   .filter-bar button{font-size:10px;padding:8px 14px}
   .review-grid{grid-template-columns:1fr;padding:32px 16px 40px}
   .blog-band{padding:60px 16px}
@@ -72,6 +72,7 @@
 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo"><img src="logo.png" alt="VL"></a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-menu">
     <a href="about.html">ABOUT</a>
     <a href="program.html">PROGRAM</a>
@@ -81,6 +82,7 @@
     <a href="reservation.html">RESERVATION</a>
   </div>
 </nav>
+<div class="nav-backdrop"></div>
 
 <section class="page-hero">
   <div class="ph-bg" style="background-image:url('hero-review.jpg')"></div>
@@ -214,6 +216,7 @@ document.querySelectorAll('#filter button').forEach(btn=>{
     });
   });
 });
+(function(){var n=document.getElementById("nav");if(!n)return;var t=n.querySelector(".nav-toggle");var b=document.querySelector(".nav-backdrop");function c(){n.classList.remove("open");document.body.style.overflow=""}if(t){t.addEventListener("click",function(){var o=n.classList.toggle("open");document.body.style.overflow=o?"hidden":"";t.setAttribute("aria-expanded",o)})}if(b){b.addEventListener("click",c)}n.querySelectorAll(".nav-menu a").forEach(function(a){a.addEventListener("click",c)});})();
 </script>
 </body>
 </html>
