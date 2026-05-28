@@ -49,6 +49,28 @@
 .founder-list .ico-c{width:36px;height:36px;border-radius:50%;background:rgba(64,39,89,.08);display:flex;align-items:center;justify-content:center;flex:0 0 auto;color:var(--primary)}
 .founder-list .ico-c svg{width:17px;height:17px;display:block}
 
+/* DIRECTOR section */
+.director{background:#fff;padding:120px 32px;border-top:1px solid var(--line)}
+.director .wrap{display:grid;grid-template-columns:1.4fr 1fr;gap:80px;align-items:start;max-width:1280px;margin:0 auto}
+.director img{aspect-ratio:4/5;object-fit:cover;width:100%;position:sticky;top:120px}
+.director h2{font-size:48px;font-weight:800;letter-spacing:-.8px;line-height:1.15;margin-bottom:10px;color:var(--ink)}
+.director .founder-role{margin-bottom:24px}
+.director .lede{font-size:15.5px;color:#333;line-height:1.95;margin-bottom:36px}
+.dir-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px 48px;border-top:1px solid var(--line);padding-top:28px}
+.dir-h{font-size:13px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--primary);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--line);display:inline-block}
+.dir-list{list-style:none;display:grid;gap:8px}
+.dir-list li{font-size:13.5px;color:#333;line-height:1.55;padding-left:14px;position:relative}
+.dir-list li::before{content:'';position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:50%;background:var(--primary);opacity:.7}
+
+@media (max-width:900px){
+  .director{padding:64px 16px}
+  .director .wrap{grid-template-columns:1fr;gap:32px}
+  .director img{position:static;aspect-ratio:4/5;max-width:340px;margin:0 auto}
+  .director h2{font-size:30px}
+  .dir-grid{grid-template-columns:1fr;gap:28px;padding-top:22px}
+  .dir-list li{font-size:13px}
+}
+
 @media (max-width:900px){
   .about-intro,.founder .wrap{grid-template-columns:1fr;gap:40px;padding:64px 16px}
   .about-intro .txt h2,.founder h2{font-size:28px}
@@ -151,7 +173,7 @@
     <img src="about-field.jpg" alt="현장 실무 컨설팅">
     <div>
       <span class="section-eyebrow" style="text-align:left">Founder</span>
-      <h2>CEO. 박주해</h2>
+      <h2>총괄디렉터. 박주해</h2>
       <span class="founder-role">VL Image Consulting 대표 / 이미지 컨설턴트</span>
       <p class="lede">15년 이상의 이미지 컨설팅 경력을 바탕으로<br>개인의 특성과 라이프스타일을 분석하여<br>최적의 이미지를 제안하는 전문 컨설턴트입니다.</p>
       <ul class="founder-list">
@@ -163,6 +185,59 @@
         <li><span class="ico-c"><svg><use href="#i-mic"/></svg></span> 학교 · 기관 · 기업 출강 진행</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<!-- DIRECTOR — 진소향 -->
+<section class="director reveal">
+  <div class="wrap">
+    <div>
+      <span class="section-eyebrow" style="text-align:left">소속 디렉터</span>
+      <h2>진소향</h2>
+      <span class="founder-role">Jin So Hyang · Color Communicator</span>
+      <p class="lede">당신만의 내적, 외적 매력을 찾아 드리는 컬러 소통 강사.<br>퍼스널컬러 컨설턴트 + 컬러 테라피 힐링 컨설턴트.</p>
+      <div class="dir-grid">
+        <div class="dir-col">
+          <h3 class="dir-h">경력</h3>
+          <ul class="dir-list">
+            <li>교보생명FP 광명·안양 퍼스널컬러교육 자문위원</li>
+            <li>기아자동차 총무팀 컬러 강의협력</li>
+            <li>삼성화재 강사사업단 컬러진단</li>
+            <li>건국대학교 전공탐색 컬러진단</li>
+            <li>순천향대학교 퍼스널컬러와 스타일 강의</li>
+            <li>BNI KOREA 스마트리더십 트레이닝 강의</li>
+            <li>안산여성지원청 교육복지사 대상 컬러테라피 교육</li>
+            <li>인천부곡초 교사교육 컬러진단</li>
+            <li>광명충현·안서초 부모교육 컬러 진단 및 테라피 교육</li>
+            <li>화성한솔초 부모교육 컬러진단</li>
+            <li>대원ENC 고객관리 컬러자문위원</li>
+            <li>오늘메이크업 컬러컨설팅 자문위원</li>
+            <li>브로디안컬러 컨설팅 자문위원</li>
+            <li>한국감성색채협회 정회원 및 강사</li>
+            <li>이음에듀커뮤니케이션 강사</li>
+            <li>브이엘이미지컨설팅 강사</li>
+          </ul>
+        </div>
+        <div class="dir-col">
+          <h3 class="dir-h">자격 및 이력</h3>
+          <ul class="dir-list">
+            <li>NPO 퍼스널 컬러 국제 자격증 보유</li>
+            <li>퍼스널 이미지 브랜딩 PIB 취득</li>
+            <li>컬러 인 포스 컬러테라피 교육 이수</li>
+            <li>심리상담사 · 청소년·아동심리 상담사 자격</li>
+            <li>컬러리스트 · 시각디자인 산업기사</li>
+            <li>현) 아트주주 교육컨설팅 운영</li>
+            <li>KSCA 한국감성색채협회 강사</li>
+          </ul>
+          <h3 class="dir-h" style="margin-top:28px">학력</h3>
+          <ul class="dir-list">
+            <li>상명대 대학원 커뮤니케이션 디자인학과 석사</li>
+            <li>상명대학교 디자인대학 시각디자인 학사</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <img src="director.jpg" alt="소속 디렉터 진소향">
   </div>
 </section>
 

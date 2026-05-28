@@ -76,6 +76,7 @@
 
 <nav class="nav" id="nav">
   <a href="index.html" class="nav-logo"><img src="logo.png" alt="VL"></a>
+  <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="nav-menu">
     <a href="about.html">ABOUT</a>
     <a href="program.html">PROGRAM</a>
@@ -85,6 +86,7 @@
     <a href="reservation.html">RESERVATION</a>
   </div>
 </nav>
+<div class="nav-backdrop"></div>
 
 <section class="page-hero">
   <div class="ph-bg" style="background-image:url('expert1.jpg')"></div>
@@ -206,6 +208,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+(function(){var n=document.getElementById("nav");if(!n)return;var t=n.querySelector(".nav-toggle");var b=document.querySelector(".nav-backdrop");function c(){n.classList.remove("open");document.body.style.overflow=""}if(t){t.addEventListener("click",function(){var o=n.classList.toggle("open");document.body.style.overflow=o?"hidden":"";t.setAttribute("aria-expanded",o)})}if(b){b.addEventListener("click",c)}n.querySelectorAll(".nav-menu a").forEach(function(a){a.addEventListener("click",c)});})();
 </script>
 </body>
 </html>
