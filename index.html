@@ -436,6 +436,27 @@ footer .copy{
   .nav-logo img,.nav.scrolled .nav-logo img{height:30px}
   .hero-title{font-size:26px}
 }
+/* iPad Pro portrait + tablet — hero 풀 그리드 노출 */
+@media (max-width:1180px){
+  .hero{aspect-ratio:2400/1350;height:auto;min-height:0;max-height:none}
+  .hero-bg{background-size:100% auto;background-position:center}
+  .hero::before{background:linear-gradient(90deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.28) 50%,rgba(0,0,0,0) 100%)}
+  .hero-text{top:48%;padding:0 48px}
+  .hero-headline{font-size:48px;letter-spacing:-1.2px;line-height:1.25;word-break:keep-all}
+  .scroll-indicator{bottom:18px;font-size:9px;letter-spacing:3px}
+  .scroll-indicator::after{height:24px}
+}
+@media (max-width:900px){
+  .hero-text{top:46%;padding:0 22px}
+  .hero-headline{font-size:22px;letter-spacing:-.5px;line-height:1.32}
+  .scroll-indicator{bottom:10px;font-size:8px;letter-spacing:2px;gap:5px}
+  .scroll-indicator::after{height:18px}
+}
+@media (max-width:480px){
+  .hero-headline{font-size:18px;line-height:1.32}
+  .scroll-indicator{bottom:8px;font-size:7.5px;letter-spacing:1.5px}
+  .scroll-indicator::after{height:14px}
+}
 </style>
 </head>
 <body>
