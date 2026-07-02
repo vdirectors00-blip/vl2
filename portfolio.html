@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PORTFOLIO | VL VALUE LIGHT</title>
+<meta name="description" content="VL VALUE LIGHT 이미지 컨설팅 포트폴리오 — 컬러 진단·이미지 컨설팅·강의·쇼핑 동행 현장">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="shared.css?v=3">
+<style>
+/* PORTFOLIO HERO (pm-1 풀와이드) */
+.pf-hero{position:relative;width:100%;height:78vh;min-height:520px;max-height:780px;overflow:hidden;background:#0a0a0a}
+.pf-hero > img.pf-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.78);z-index:1}
+.pf-hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(135deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.3) 45%,rgba(0,0,0,.5) 100%);pointer-events:none}
+.pf-hero-txt{position:absolute;left:8%;top:50%;transform:translateY(-50%);z-index:5;max-width:560px;color:#fff}
+.pf-hero-eyebrow{font-size:13px;letter-spacing:5px;color:var(--purple-light,#b8a4d8);font-weight:700;text-transform:uppercase;margin-bottom:28px;display:block}
+.pf-hero-txt h1{font-family:'Hanken Grotesk','Pretendard Variable',sans-serif;font-size:72px;font-weight:800;line-height:1.05;letter-spacing:-1.6px;margin-bottom:0;color:#fff}
+
+/* INTRO BAND */
+.pf-intro{padding:100px 32px 60px;max-width:980px;margin:0 auto;text-align:center}
+.pf-intro-eyebrow{font-size:13px;letter-spacing:5px;color:var(--gold-soft,#a48948);font-weight:700;text-transform:uppercase;margin-bottom:24px;display:block}
+.pf-intro h2{font-size:36px;font-weight:700;line-height:1.45;letter-spacing:-.5px;color:var(--ink);margin-bottom:22px}
+.pf-intro p{font-size:15px;color:#666;line-height:1.9}
+
+/* CATEGORY SECTIONS */
+.pf-cat{padding:60px 32px;max-width:1320px;margin:0 auto}
+.pf-cat-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;gap:24px;flex-wrap:wrap}
+.pf-cat-head .lbl{font-size:12px;letter-spacing:4.5px;color:var(--gold-soft,#a48948);font-weight:700;text-transform:uppercase;margin-bottom:10px;display:block}
+.pf-cat-head h3{font-size:30px;font-weight:800;letter-spacing:-.5px;color:var(--ink);line-height:1.2}
+.pf-cat-head .meta{font-size:13px;color:#888;letter-spacing:.5px}
+
+/* 가로 슬라이드 (모든 카테고리) */
+.pf-slider-wrap{position:relative}
+.pf-slider{
+  display:flex;gap:18px;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding:4px 4px 24px;
+  scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.18) transparent;
+}
+.pf-slider::-webkit-scrollbar{height:6px}
+.pf-slider::-webkit-scrollbar-track{background:transparent}
+.pf-slider::-webkit-scrollbar-thumb{background:rgba(0,0,0,.18);border-radius:3px}
+.pf-slider::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.32)}
+.pf-card{
+  flex:0 0 380px;width:380px;
+  position:relative;overflow:hidden;background:#1a1a1a;border-radius:6px;
+  aspect-ratio:1/1;cursor:pointer;
+  scroll-snap-align:start;
+  transition:box-shadow .4s,transform .4s;
+}
+.pf-card img{
+  width:100%;height:100%;object-fit:cover;object-position:center top;
+  transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .4s;display:block;
+}
+.pf-card:hover{box-shadow:0 18px 36px rgba(0,0,0,.2);transform:translateY(-3px)}
+.pf-card:hover img{transform:scale(1.04)}
+
+/* 슬라이더 좌우 버튼 */
+.pf-nav-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(255,255,255,.95);border:1px solid rgba(0,0,0,.08);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:5;
+  box-shadow:0 6px 18px rgba(0,0,0,.14);
+  color:var(--ink);
+  transition:background .25s,transform .25s,opacity .25s;
+}
+.pf-nav-btn:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+.pf-nav-btn svg{width:18px;height:18px}
+.pf-nav-btn.prev{left:-10px}
+.pf-nav-btn.next{right:-10px}
+.pf-nav-btn[disabled]{opacity:0;pointer-events:none}
+
+/* CTA (구버전 - 미사용) */
+.pf-cta{display:none}
+
+/* EDITORIAL WALL — 마소너리 자유 배치 */
+.edi-wall{background:#fff;padding:60px 0 100px}
+.edi-wall-inner{
+  column-count:3;column-gap:4px;padding:0 4px;
+}
+.edi-wall-inner img{
+  width:100%;height:auto;display:block;margin:0 0 4px 0;
+  break-inside:avoid;
+  transition:opacity .5s cubic-bezier(.2,.8,.2,1),transform .5s cubic-bezier(.2,.8,.2,1);
+  will-change:transform;
+}
+.edi-wall-inner img:hover{opacity:.88;transform:scale(.995)}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .pf-hero-txt h1{font-size:64px}
+}
+@media (max-width:768px){
+  .pf-hero{height:64vh;min-height:420px}
+  .pf-hero-overlay{background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.4) 60%,rgba(0,0,0,.7) 100%)}
+  .pf-hero-txt{left:50%;right:auto;transform:translate(-50%,-50%);text-align:center;padding:0 20px;max-width:none;width:100%}
+  .pf-hero-eyebrow{margin-bottom:18px;font-size:12px;letter-spacing:4px}
+  .pf-hero-txt h1{font-size:42px;margin-bottom:0;letter-spacing:-1.2px}
+  .pf-intro{padding:64px 18px 36px}
+  .pf-intro h2{font-size:22px;line-height:1.5}
+  .pf-intro p{font-size:13.5px}
+  .pf-cat{padding:40px 18px}
+  .pf-cat-head{margin-bottom:24px;align-items:flex-start;flex-direction:column;gap:0}
+  .pf-cat-head h3{font-size:22px}
+  .pf-cat-head .meta{display:none}
+  .pf-slider{gap:12px;padding:4px 4px 20px}
+  .pf-card{flex:0 0 78%;width:78%}
+  .pf-nav-btn{display:none}
+  .edi-wall{padding:40px 0 64px}
+  .edi-wall-inner{column-count:2;column-gap:3px;padding:0 3px}
+  .edi-wall-inner img{margin-bottom:3px}
+}
+@media (max-width:480px){
+  .pf-hero-txt h1{font-size:34px;letter-spacing:-1px}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="vl-symbol.png" alt="" class="sym">
+    <span class="b">VL VALUE LIGHT</span>
+    <small>Image Consulting</small>
+  </a>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-menu">
+    <a href="about2.html">About</a>
+    <div class="nav-item">
+      <span class="nav-parent">Personal Services</span>
+      <div class="nav-dropdown">
+        <a href="personal-styling.html">Personal Styling</a>
+        <a href="wedding-consulting.html">Wedding Consulting</a>
+      </div>
+    </div>
+    <a href="portfolio.html" class="current">Portfolio</a>
+    <a href="lecture.html">Lecture</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/value_light_" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO (M3 풀와이드 + 좌측 타이틀) -->
+<section class="pf-hero">
+  <img class="pf-hero-img" src="M3.jpg" alt="">
+  <div class="pf-hero-overlay"></div>
+  <div class="pf-hero-txt">
+    <span class="pf-hero-eyebrow">Editorial Portfolio</span>
+    <h1>A visual record of<br>VL Value Light.</h1>
+  </div>
+</section>
+
+<!-- EDITORIAL WALL (마소너리 자유 배치 - 카테고리 구분 없음) -->
+<section class="edi-wall">
+  <div class="edi-wall-inner">
+    <img src="pc1.jpg" alt="">
+    <img src="lc1.jpg" alt="">
+    <img src="kb1.jpg" alt="">
+    <img src="pc3.jpg" alt="">
+    <img src="sh1.jpg" alt="">
+    <img src="lc3.jpg" alt="">
+    <img src="pc8.jpg" alt="">
+    <img src="kb2.jpg" alt="">
+    <img src="lc5.jpg" alt="">
+    <img src="pc5.jpg" alt="">
+    <img src="sh2.jpg" alt="">
+    <img src="lc2.jpg" alt="">
+    <img src="kb3.jpg" alt="">
+    <img src="pc9.jpg" alt="">
+    <img src="lc7.jpg" alt="">
+    <img src="pc2.jpg" alt="">
+    <img src="sh3.jpg" alt="">
+    <img src="kb4.jpg" alt="">
+    <img src="lc4.jpg" alt="">
+    <img src="pc7.jpg" alt="">
+    <img src="pc10.jpg" alt="">
+    <img src="lc6.jpg" alt="">
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <span class="tag">Contact</span>
+      <h3>협업 및 강의 문의</h3>
+      <p>기업 강의, 컨설팅, 협업 제안 등<br>언제든지 문의주세요.</p>
+      <a href="contact.html" class="btn-inquire">문의하기</a>
+    </div>
+    <div class="contact-info">
+      <a href="tel:01054901146" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2c1 2 3 4 5 5l2-3 5 2v4c0 1-1 2-2 2-9 0-15-6-15-15 0-1 1-2 2-2z"/></svg></span>
+        <small>Phone</small>
+        <span class="v">010-5490-1146</span>
+      </a>
+      <a href="mailto:vl.director00@gmail.com" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 7 9-7"/></svg></span>
+        <small>Mail</small>
+        <span class="v">vl.director00<br>@gmail.com</span>
+      </a>
+      <a href="https://www.instagram.com/value_light_" target="_blank" rel="noopener" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+        <small>Instagram</small>
+        <span class="v">@value_light_</span>
+      </a>
+      <a href="https://map.naver.com/p/entry/place/1079886156" target="_blank" rel="noopener" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4l4 7V5h4v14h-4l-4-7v7H6z"/></svg></span>
+        <small>Reservation</small>
+        <span class="v">네이버 예약</span>
+      </a>
+    </div>
+    <div class="contact-right">
+      <img class="mark-img" src="vl-symbol.png" alt="VL Symbol">
+      <span class="nm">VL VALUE LIGHT</span>
+      <span class="desc">IMAGE CONSULTING</span>
+    </div>
+  </div>
+</footer>
+<div class="foot-copy">© 2026 VL · VALUE LIGHT IMAGE CONSULTING. All Rights Reserved.</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:0,rootMargin:'0px 0px 0px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// 포트폴리오 슬라이더 prev/next + 끝 도달 시 버튼 disable
+document.querySelectorAll('.pf-slider-wrap').forEach(function(wrap){
+  var slider = wrap.querySelector('.pf-slider');
+  var prev = wrap.querySelector('.pf-nav-btn.prev');
+  var next = wrap.querySelector('.pf-nav-btn.next');
+  if(!slider || !prev || !next) return;
+  function step(){
+    var card = slider.querySelector('.pf-card');
+    if(!card) return 380;
+    var gap = parseFloat(getComputedStyle(slider).gap) || 18;
+    return card.offsetWidth + gap;
+  }
+  function update(){
+    var maxScroll = slider.scrollWidth - slider.clientWidth;
+    prev.toggleAttribute('disabled', slider.scrollLeft <= 2);
+    next.toggleAttribute('disabled', slider.scrollLeft >= maxScroll - 2);
+  }
+  prev.addEventListener('click', function(){ slider.scrollBy({left:-step(), behavior:'smooth'}); });
+  next.addEventListener('click', function(){ slider.scrollBy({left:step(), behavior:'smooth'}); });
+  slider.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+});
+(function(){var n=document.getElementById("nav");if(!n)return;var t=n.querySelector(".nav-toggle");var b=document.querySelector(".nav-backdrop");function c(){n.classList.remove("open");document.body.style.overflow=""}if(t){t.addEventListener("click",function(){var o=n.classList.toggle("open");document.body.style.overflow=o?"hidden":"";t.setAttribute("aria-expanded",o)})}if(b){b.addEventListener("click",c)}n.querySelectorAll(".nav-menu a").forEach(function(a){a.addEventListener("click",c)});})();
+</script>
+</body>
+</html>

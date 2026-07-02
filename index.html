@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VL VALUE LIGHT | Style & Image Consulting</title>
+<meta name="description" content="VL VALUE LIGHT — 퍼스널컬러·이미지 컨설팅·기업 강의·K-Beauty. 에디토리얼 감각의 토탈 이미지 컨설팅.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Cormorant+Garamond:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="shared.css?v=3">
+<style>
+:root{
+  --bg:#fff;
+  --ink:#0d0d0d;
+  --mute:#7a7a7a;
+  --line:#ececec;
+  --soft:#f5f4f1;
+  --purple:#6b4a9a;
+  --purple-light:#b8a4d8;
+  --purple-deep:#3d2865;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:'Hanken Grotesk','Pretendard Variable',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:0;background:none}
+
+/* ── NAV ───────────────────────── */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 36px;background:#ffffff;
+  border-bottom:1px solid var(--line);
+  box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04);
+}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo .sym{height:36px;width:auto;display:block;flex:0 0 auto}
+.nav-logo .b{font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:18px;letter-spacing:.5px;color:var(--ink);line-height:1}
+.nav-logo .b em{font-style:normal;font-weight:400;color:#888;padding-left:2px}
+.nav-logo small{font-size:11px;letter-spacing:2.5px;color:var(--mute);font-weight:600;text-transform:uppercase;line-height:1;margin-left:2px}
+.nav-menu{display:flex;align-items:center;gap:36px}
+.nav-menu a{font-size:13px;letter-spacing:.3px;color:var(--ink);font-weight:500;position:relative;transition:color .25s}
+.nav-menu a.current,.nav-menu a:hover{color:#000}
+.nav-menu a.current{font-weight:700}
+.nav-icons{display:flex;align-items:center;gap:14px;margin-left:8px}
+.nav-icons a{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink);transition:background .25s}
+.nav-icons a:hover{background:var(--soft)}
+.nav-icons svg{width:16px;height:16px}
+.nav-toggle{display:none;width:32px;height:32px;flex-direction:column;justify-content:center;gap:5px;align-items:flex-end;padding:0}
+.nav-toggle span{width:22px;height:1.4px;background:var(--ink);transition:transform .3s,opacity .3s}
+.nav-toggle span:nth-child(2){width:16px}
+.nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);width:22px}
+.nav.open .nav-toggle span:nth-child(2){opacity:0}
+.nav.open .nav-toggle span:nth-child(3){transform:translateY(-6px) rotate(-45deg);width:22px}
+
+/* ── HERO (좌우 50:50 분할) ── */
+.hero{
+  margin-top:74px;display:grid;grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - 74px);background:#fff;
+}
+.hero-img{position:relative;overflow:hidden;background:#1a1a1a}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-text{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:64px 90px;
+}
+.hero-eyebrow{
+  font-family:'Hanken Grotesk',sans-serif;
+  font-size:12px;letter-spacing:3px;color:var(--mute);font-weight:600;text-transform:uppercase;
+  margin-bottom:28px;display:inline-flex;align-items:center;gap:12px;
+}
+.hero-eyebrow::before{content:'';width:32px;height:1px;background:#999}
+.hero h1{
+  font-family:'Hanken Grotesk',sans-serif;
+  font-weight:800;
+  font-size:clamp(48px,6.4vw,108px);
+  line-height:.97;letter-spacing:-2px;color:var(--ink);
+  text-transform:uppercase;
+  margin-bottom:0;
+}
+.hero h1 em{
+  display:block;font-style:normal;
+  font-size:clamp(40px,5.4vw,90px);
+  letter-spacing:-1.8px;line-height:.97;
+  white-space:nowrap;margin-top:0;
+}
+.hero-meta{
+  margin-top:56px;padding-top:36px;
+  border-top:1px solid var(--ink);
+  line-height:1.5;color:var(--ink);max-width:640px;
+  letter-spacing:-.3px;
+}
+.hero-meta strong{display:block;font-weight:800;color:var(--ink);margin-bottom:14px;font-size:26px;letter-spacing:-.6px;line-height:1.35}
+.hero-meta .light{font-weight:600;color:var(--ink);font-size:19px;display:block;letter-spacing:-.3px;line-height:1.5}
+
+/* ── INTRO ─────────────────────── */
+.intro{padding:140px 56px;text-align:center;border-top:1px solid var(--line)}
+.intro .wrap{max-width:1080px;margin:0 auto}
+.intro .lbl{font-size:11.5px;letter-spacing:3px;color:var(--mute);font-weight:700;text-transform:uppercase;display:block;margin-bottom:32px}
+.intro h2{
+  font-family:'Hanken Grotesk',sans-serif;
+  font-weight:700;font-size:clamp(28px,3.4vw,50px);
+  line-height:1.2;letter-spacing:-1px;color:var(--ink);margin-bottom:40px;
+}
+.intro p{font-size:16px;line-height:1.85;color:#444;max-width:760px;margin:0 auto 18px}
+
+/* ── SECTION HEAD ─────────────── */
+.sec-head{padding:80px 56px 36px;max-width:1440px;margin:0 auto}
+.sec-head .lbl{font-size:11.5px;letter-spacing:3px;color:var(--mute);font-weight:700;text-transform:uppercase;display:block;margin-bottom:22px}
+.sec-head h2{
+  font-family:'Hanken Grotesk',sans-serif;
+  font-weight:800;font-size:clamp(34px,4.2vw,64px);
+  line-height:1.02;letter-spacing:-1.5px;text-transform:uppercase;color:var(--ink);
+  max-width:980px;
+}
+.sec-head .sub{font-size:15px;color:#555;line-height:1.85;max-width:680px;margin-top:24px}
+
+/* ── PERSONAL SERVICES (검정 배경 + 마퀴 + 보라 액센트) ── */
+.svc-block{background:var(--ink);color:#fff;padding:0}
+/* 무한 루프 마퀴 (끊김 없음) */
+.marquee{overflow:hidden;padding:30px 0;white-space:nowrap;position:relative}
+.marquee-track{display:flex;width:max-content;animation:marqueeScroll 34s linear infinite}
+.marquee-item{
+  font-family:'Cormorant Garamond','Nanum Myeongjo',serif;
+  font-size:34px;letter-spacing:1px;line-height:1;
+  font-weight:500;text-transform:uppercase;
+  color:rgba(255,255,255,.88);
+  display:flex;align-items:center;flex-shrink:0;
+  padding:0 8px;
+}
+.marquee-item::after{content:'·';display:inline-block;margin-left:20px;color:var(--purple-light);opacity:.85;font-weight:400}
+@keyframes marqueeScroll{
+  0%{transform:translate3d(0,0,0)}
+  100%{transform:translate3d(-50%,0,0)}
+}
+.svc-block-wrap{max-width:1500px;margin:0 auto;padding:110px 40px 130px;display:grid;grid-template-columns:1fr 2.6fr;gap:88px;align-items:flex-start}
+.svc-block-head{position:sticky;top:120px}
+.svc-block-head .lbl{font-size:12px;letter-spacing:3px;color:var(--purple-light);font-weight:700;text-transform:uppercase;display:block;margin-bottom:26px}
+.svc-block-head h2{
+  font-family:'Hanken Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(38px,4vw,60px);line-height:1;letter-spacing:-1.6px;
+  text-transform:uppercase;color:#fff;margin-bottom:0;
+}
+.svc-block-head p{font-size:17px;line-height:1.8;color:rgba(255,255,255,.75);margin-top:42px;max-width:420px;letter-spacing:-.2px}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc-card{display:flex;flex-direction:column;cursor:pointer;color:inherit;text-decoration:none}
+.svc-card .img{position:relative;aspect-ratio:1/1.35;overflow:hidden;background:#1a1a1a;border-radius:14px;margin-bottom:22px}
+.svc-card .img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.svc-card:hover .img img{transform:scale(1.05)}
+.svc-card .label{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 24px;border-radius:999px;
+  background:#fff;color:var(--ink);
+  font-family:'Hanken Grotesk',sans-serif;
+  font-size:12.5px;letter-spacing:1.5px;font-weight:700;
+  text-transform:uppercase;text-align:center;
+  transition:background .3s,color .3s,transform .3s;
+}
+.svc-card:hover .label{background:var(--purple);color:#fff;transform:translateY(-2px)}
+
+/* ── PORTFOLIO INFO BAND (그레이 + VIEW MORE) ───── */
+.pf-info{background:#ececea;padding:96px 56px}
+.pf-info-wrap{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:60px;flex-wrap:wrap}
+.pf-info-left h2{
+  font-family:'Hanken Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(34px,3.6vw,54px);line-height:1;letter-spacing:-1.6px;
+  text-transform:uppercase;color:var(--ink);margin-bottom:20px;
+}
+.pf-info-left p{font-size:17px;line-height:1.75;color:#4a4a4a;letter-spacing:-.2px;max-width:640px}
+.pf-info .btn-view{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:18px 44px;border-radius:999px;
+  border:1.5px solid var(--purple);background:transparent;color:var(--purple);
+  font-family:'Hanken Grotesk',sans-serif;
+  font-size:12px;letter-spacing:3px;font-weight:700;text-transform:uppercase;
+  transition:background .3s,color .3s,transform .3s;
+  flex-shrink:0;
+}
+.pf-info .btn-view:hover{background:var(--purple);color:#fff;transform:translateY(-2px)}
+
+/* ── PORTFOLIO SLIDER (사진 6장 + 좌우 화살표) ───── */
+.pf-band{background:#fff;padding:0;position:relative;overflow:hidden}
+.pf-slider-wrap{position:relative}
+.pf-slider{
+  display:flex;gap:2px;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  scrollbar-width:none;
+}
+.pf-slider::-webkit-scrollbar{display:none}
+.pf-slide{
+  flex:0 0 calc(100%/3);width:calc(100%/3);
+  aspect-ratio:4/5;overflow:hidden;background:#f5f5f5;
+  scroll-snap-align:start;position:relative;
+}
+.pf-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.pf-slide:hover img{transform:scale(1.03)}
+.pf-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:56px;height:56px;border-radius:50%;
+  background:rgba(255,255,255,.96);border:1px solid rgba(0,0,0,.06);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:5;color:var(--ink);
+  box-shadow:0 8px 24px rgba(0,0,0,.14);
+  transition:background .25s,transform .25s,opacity .25s;
+}
+.pf-nav:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+.pf-nav svg{width:18px;height:18px}
+.pf-nav.prev{left:24px}
+.pf-nav.next{right:24px}
+.pf-nav[disabled]{opacity:0;pointer-events:none}
+
+/* ── EDITORIAL (Big Banner + Gallery) ── */
+.edi{padding:120px 0 80px}
+.edi-banner{position:relative;width:100%;aspect-ratio:24/9;overflow:hidden;background:#1a1a1a;margin-bottom:28px}
+.edi-banner img{width:100%;height:100%;object-fit:cover;display:block}
+.edi-banner .cap{position:absolute;left:56px;bottom:56px;color:#fff;z-index:5}
+.edi-banner .cap .lbl{font-size:11.5px;letter-spacing:3px;color:#fff;font-weight:600;text-transform:uppercase;display:block;margin-bottom:14px;opacity:.85}
+.edi-banner .cap h3{font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:clamp(28px,3.2vw,48px);letter-spacing:-.8px;line-height:1.05;text-transform:uppercase;max-width:680px}
+.edi-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.55) 0%,rgba(0,0,0,.05) 60%,rgba(0,0,0,.2) 100%)}
+.edi-banner .cap{z-index:5}
+.edi-cta{max-width:1440px;margin:0 auto;padding:0 56px;text-align:right;margin-bottom:60px}
+.edi-cta a{font-size:11.5px;letter-spacing:2.5px;color:var(--ink);font-weight:700;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid var(--ink);padding-bottom:6px;transition:gap .3s}
+.edi-cta a:hover{gap:14px}
+.edi-cta a::after{content:'→';font-size:13px}
+.edi-grid{max-width:1440px;margin:0 auto;padding:0 56px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.edi-card{aspect-ratio:1/1;overflow:hidden;background:var(--soft);cursor:pointer;position:relative}
+.edi-card img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.edi-card:hover img{transform:scale(1.06)}
+
+/* ── STYLE GUIDES ─────────────── */
+.guides{padding:120px 56px;background:var(--soft);border-top:1px solid var(--line)}
+.guides .wrap{max-width:1440px;margin:0 auto}
+.guides-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:50px}
+.guide{background:#fff;cursor:pointer;display:flex;flex-direction:column;transition:transform .4s}
+.guide:hover{transform:translateY(-4px)}
+.guide .img{aspect-ratio:4/3;overflow:hidden}
+.guide .img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.guide:hover .img img{transform:scale(1.04)}
+.guide .body{padding:30px 28px 34px;display:flex;flex-direction:column;flex:1}
+.guide .meta{font-size:10.5px;letter-spacing:2.5px;color:var(--mute);font-weight:700;text-transform:uppercase;margin-bottom:14px}
+.guide h3{font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.3px;line-height:1.35;color:var(--ink);margin-bottom:18px;flex:1}
+.guide .more{font-size:11px;letter-spacing:2px;color:var(--ink);font-weight:700;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+.guide .more::after{content:'›';font-size:14px}
+.guides-all{text-align:center;margin-top:50px}
+.guides-all a{font-size:11.5px;letter-spacing:2.5px;color:var(--ink);font-weight:700;text-transform:uppercase;display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--ink);padding-bottom:6px;transition:gap .3s}
+.guides-all a:hover{gap:16px}
+.guides-all a::after{content:'→';font-size:13px}
+
+/* ── CONNECT (CTA) ─────────────── */
+.connect{padding:140px 56px;border-top:1px solid var(--line)}
+.connect .wrap{max-width:1080px;margin:0 auto;text-align:center}
+.connect .lbl{font-size:11.5px;letter-spacing:3px;color:var(--mute);font-weight:700;text-transform:uppercase;display:block;margin-bottom:32px}
+.connect h2{
+  font-family:'Hanken Grotesk',sans-serif;
+  font-weight:800;font-size:clamp(34px,4.4vw,68px);line-height:1;letter-spacing:-1.5px;
+  text-transform:uppercase;color:var(--ink);margin-bottom:36px;
+}
+.connect p{font-size:16px;line-height:1.85;color:#555;max-width:560px;margin:0 auto 48px}
+.connect .actions{display:inline-flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.btn-pill{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:18px 42px;border-radius:999px;
+  font-size:12px;letter-spacing:2.5px;text-transform:uppercase;font-weight:700;
+  transition:background .3s,color .3s,transform .3s;
+  font-family:'Hanken Grotesk',sans-serif;
+}
+.btn-pill.dark{background:var(--ink);color:#fff}
+.btn-pill.dark:hover{background:#444;transform:translateY(-2px)}
+.btn-pill.ghost{border:1px solid var(--ink);color:var(--ink)}
+.btn-pill.ghost:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+
+/* ── STYLE GUIDES (신규) ──────── */
+.sg-band{background:#fff;padding:130px 56px 140px}
+.sg-head{max-width:1440px;margin:0 auto 60px;display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.sg-title{display:flex;flex-direction:column;gap:18px}
+.sg-title h2{
+  font-family:'Hanken Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(48px,5.6vw,88px);line-height:.95;letter-spacing:-2px;
+  color:var(--ink);
+}
+.sg-tag{
+  align-self:flex-start;
+  display:inline-block;padding:8px 22px;
+  border:1px solid var(--ink);border-radius:999px;
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:16px;letter-spacing:1px;color:var(--ink);
+}
+.sg-all{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:16px 32px;border-radius:999px;
+  border:1px solid var(--ink);background:#fff;color:var(--ink);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:16px;letter-spacing:.3px;
+  transition:background .3s,color .3s,transform .3s;
+}
+.sg-all:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+.sg-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.sg-card{display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer;color:var(--ink)}
+.sg-img{width:100%;aspect-ratio:1/1.05;overflow:hidden;background:var(--soft);border-radius:6px;margin-bottom:28px}
+.sg-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1)}
+.sg-card:hover .sg-img img{transform:scale(1.04)}
+.sg-card h3{
+  font-family:'Hanken Grotesk',sans-serif;font-weight:600;
+  font-size:18px;line-height:1.45;letter-spacing:-.3px;color:var(--ink);
+  text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px;
+  margin-bottom:28px;max-width:360px;
+}
+.sg-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:15px 42px;border-radius:999px;
+  border:1px solid var(--purple);color:var(--purple);
+  font-family:'Hanken Grotesk',sans-serif;font-weight:700;
+  font-size:12px;letter-spacing:2.5px;text-transform:uppercase;
+  transition:background .3s,color .3s,transform .3s;
+}
+.sg-card:hover .sg-btn{background:var(--purple);color:#fff;transform:translateY(-2px)}
+
+/* ── INSTAGRAM FEED ──────────── */
+.ig-band{padding:110px 56px;background:#fff;border-top:1px solid var(--line)}
+.ig-head{max-width:1440px;margin:0 auto 44px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.ig-head .l .lbl{font-size:11.5px;letter-spacing:3px;color:var(--mute);font-weight:700;text-transform:uppercase;display:block;margin-bottom:16px}
+.ig-head .l h2{
+  font-family:'Hanken Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(30px,3.2vw,48px);line-height:1;letter-spacing:-1.2px;
+  text-transform:uppercase;color:var(--ink);
+}
+.ig-head .r{text-align:right}
+.ig-head .r a{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:12px;letter-spacing:2.5px;color:var(--ink);font-weight:700;text-transform:uppercase;
+  padding:14px 28px;border:1.5px solid var(--ink);border-radius:999px;
+  transition:background .3s,color .3s,transform .3s;
+}
+.ig-head .r a:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
+.ig-head .r a svg{width:14px;height:14px}
+.ig-embed{max-width:1440px;margin:0 auto;background:var(--soft);border-radius:12px;overflow:hidden;position:relative;min-height:520px}
+.ig-embed iframe{width:100%;border:0;display:block}
+.ig-embed .placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:60px 24px;color:var(--mute);
+}
+.ig-embed .placeholder svg{width:52px;height:52px;color:var(--purple);margin-bottom:20px;opacity:.6}
+.ig-embed .placeholder h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:.3px}
+.ig-embed .placeholder p{font-size:13px;line-height:1.75;max-width:440px}
+
+/* ── CONTACT (예약 폼 + 사진) ──────── */
+.ct-band{background:#ececea;padding:130px 56px 150px;border-top:1px solid var(--line)}
+.ct-wrap{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.ct-left h2{
+  font-family:'Hanken Grotesk',sans-serif;font-weight:800;
+  font-size:clamp(44px,5.4vw,82px);line-height:.98;letter-spacing:-2px;
+  color:var(--ink);margin-bottom:26px;
+}
+.ct-left .lede{
+  font-family:'Hanken Grotesk','Pretendard Variable',sans-serif;
+  font-style:normal;font-weight:600;
+  font-size:17px;line-height:1.7;color:#3a3a37;letter-spacing:-.2px;
+  max-width:460px;margin-bottom:56px;
+}
+.ct-form{display:grid;gap:26px;max-width:600px}
+.ct-form label{display:block}
+.ct-form label > .lbl{
+  display:block;font-size:14px;font-weight:700;color:var(--ink);
+  margin-bottom:10px;letter-spacing:.2px;
+}
+.ct-form label > .lbl small{font-weight:400;color:var(--mute);font-size:12.5px;margin-left:6px;letter-spacing:0}
+.ct-row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ct-form input,.ct-form textarea{
+  width:100%;padding:14px 16px;
+  border:1px solid #aaa;background:#fff;
+  font-family:'Hanken Grotesk','Pretendard Variable',sans-serif;
+  font-size:15px;color:var(--ink);
+  transition:border-color .3s;
+  border-radius:0;
+}
+.ct-form input:focus,.ct-form textarea:focus{outline:none;border-color:var(--purple);border-width:2px;padding:13px 15px}
+.ct-form textarea{min-height:130px;resize:vertical}
+.ct-form .ct-submit{
+  justify-self:flex-start;margin-top:6px;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:14px 40px;border:1.5px solid var(--purple);
+  background:transparent;color:var(--purple);
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;
+  font-size:19px;letter-spacing:.5px;cursor:pointer;
+  border-radius:0;
+  transition:background .3s,color .3s,transform .3s;
+}
+.ct-form .ct-submit:hover{background:var(--purple);color:#fff;transform:translateY(-2px)}
+.ct-right{width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--soft)}
+.ct-right img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+/* ── FOOTER (shared.css 사용 - 서브페이지 동일) ──────────────────── */
+
+/* ── REVEAL ──────────────── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 1s cubic-bezier(.2,.8,.2,1),transform 1s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ── RESPONSIVE ─────────────── */
+@media (max-width:1180px){
+  .nav-menu{gap:24px}
+  .nav-menu a{font-size:12px}
+  .hero-text{padding:60px 50px}
+}
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-img{aspect-ratio:4/3}
+  .hero-text{padding:60px 32px 80px}
+  .hero h1{font-size:42px;letter-spacing:-1.2px}
+  .hero-meta{margin-top:32px}
+  .svc-grid,.guides-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .svc-block-wrap{grid-template-columns:1fr;gap:48px}
+  .svc-block-head{position:static}
+  .pf-slide{flex:0 0 50%;width:50%}
+  .edi-grid{grid-template-columns:repeat(3,1fr);gap:10px}
+  .edi-banner .cap{left:32px;bottom:32px}
+}
+@media (max-width:768px){
+  .nav{padding:14px 20px;background:#ffffff !important}
+  .nav-logo small{display:none}
+  .nav-logo .sym{height:28px}
+  .nav-logo .b{font-size:15px;letter-spacing:.3px;color:var(--ink) !important}
+  .nav-menu{
+    position:fixed;top:0;right:0;width:80%;max-width:340px;height:100vh;
+    background:#fff;flex-direction:column;align-items:flex-start;justify-content:center;
+    padding:60px 36px;gap:24px;transform:translateX(100%);
+    transition:transform .4s cubic-bezier(.2,.8,.2,1);
+    box-shadow:-20px 0 60px rgba(0,0,0,.08);
+  }
+  .nav.open .nav-menu{transform:translateX(0)}
+  .nav-menu a{font-size:14px;letter-spacing:1px}
+  .nav-icons{display:none}
+  .nav-toggle{display:flex;z-index:120}
+  .hero{margin-top:60px}
+  .hero-img{aspect-ratio:1/1}
+  .hero-text{padding:48px 22px 60px}
+  .hero-eyebrow{margin-bottom:20px;font-size:10.5px;letter-spacing:2.5px}
+  .hero h1{font-size:34px;letter-spacing:-1px}
+  .hero h1 em{font-size:28px;letter-spacing:-.9px;margin-top:0}
+  .hero-meta{margin-top:32px;padding-top:24px}
+  .hero-meta strong{font-size:18px;margin-bottom:10px;letter-spacing:-.4px}
+  .hero-meta .light{font-size:14px;letter-spacing:-.2px}
+  .intro{padding:72px 22px}
+  .intro h2{font-size:22px}
+  .intro p{font-size:13.5px}
+  .sec-head{padding:60px 22px 22px}
+  .sec-head h2{font-size:28px;letter-spacing:-.8px}
+  .svc-block{padding:0}
+  .svc-block-wrap{padding:64px 22px}
+  .svc-grid{grid-template-columns:1fr;gap:24px}
+  .svc-card .img{aspect-ratio:1/1}
+  .svc-block-head h2{font-size:34px;letter-spacing:-1px}
+  .svc-block-head p{font-size:15px;margin-top:22px;max-width:none}
+  .svc-block-head p br{display:none}
+  .marquee{padding:20px 0}
+  .marquee-item{font-size:22px;padding:0 6px;letter-spacing:.5px}
+  .marquee-item::after{margin-left:14px}
+  .pf-slide{flex:0 0 82%;width:82%;aspect-ratio:4/5}
+  .pf-nav{width:44px;height:44px}
+  .pf-nav.prev{left:12px}
+  .pf-nav.next{right:12px}
+  .pf-info{padding:56px 22px}
+  .pf-info-wrap{gap:28px}
+  .pf-info-left h2{font-size:30px;letter-spacing:-.9px}
+  .pf-info-left p{font-size:14px}
+  .pf-info .btn-view{padding:15px 32px;font-size:11px;letter-spacing:2.5px}
+  .sg-band{padding:72px 22px 80px}
+  .sg-head{margin-bottom:36px;gap:22px}
+  .sg-title h2{font-size:42px;letter-spacing:-1.2px}
+  .sg-tag{font-size:14px;padding:6px 18px}
+  .sg-all{font-size:14px;padding:12px 24px}
+  .sg-grid{grid-template-columns:1fr;gap:44px}
+  .sg-img{aspect-ratio:1/1;margin-bottom:22px}
+  .sg-card h3{font-size:17px;margin-bottom:22px}
+  .sg-btn{padding:13px 32px;font-size:11px;letter-spacing:2px}
+  .ct-band{padding:72px 22px 90px}
+  .ct-wrap{grid-template-columns:1fr;gap:40px}
+  .ct-left h2{font-size:44px;letter-spacing:-1.4px}
+  .ct-left .lede{font-size:17px;margin-bottom:36px}
+  .ct-right{order:-1}
+  .ct-form input,.ct-form textarea{font-size:14px}
+  .ct-form .ct-submit{font-size:17px;padding:12px 34px}
+  .edi{padding:72px 0 50px}
+  .edi-banner{aspect-ratio:4/5}
+  .edi-banner .cap{left:22px;bottom:22px;right:22px}
+  .edi-banner .cap h3{font-size:22px}
+  .edi-cta{padding:0 22px;text-align:left;margin-bottom:36px}
+  .edi-grid{padding:0 22px;grid-template-columns:repeat(2,1fr);gap:8px}
+  .guides{padding:72px 22px}
+  .guides-grid{grid-template-columns:1fr;gap:24px;margin-top:32px}
+  .guide .body{padding:24px 22px 28px}
+  .connect{padding:80px 22px}
+  .connect h2{font-size:32px}
+  .connect p{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="vl-symbol.png" alt="" class="sym">
+    <span class="b">VL VALUE LIGHT</span>
+    <small>Image Consulting</small>
+  </a>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-menu">
+    <a href="about2.html">About</a>
+    <div class="nav-item">
+      <span class="nav-parent">Personal Services</span>
+      <div class="nav-dropdown">
+        <a href="personal-styling.html">Personal Styling</a>
+        <a href="wedding-consulting.html">Wedding Consulting</a>
+      </div>
+    </div>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="lecture.html">Lecture</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/value_light_" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO (좌우 50:50 분할) -->
+<section class="hero">
+  <div class="hero-img"><img src="main.jpg" alt=""></div>
+  <div class="hero-text">
+    <h1>Style<br>Consulting<br>with an<br><em>VL VALUE LIGHT</em></h1>
+    <div class="hero-meta">
+      <strong>사람의 가치를 발견하고 이미지로 완성합니다.</strong>
+      <span class="light">퍼스널컬러 · 얼굴형 · 골격 분석을 기반으로<br>개인과 기업의 이미지를 설계합니다.</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- PERSONAL IMAGE SERVICES (검정 + 마퀴 + 보라) -->
+<section class="svc-block reveal" id="svc">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">Personal Color</span>
+      <span class="marquee-item">Image Consulting</span>
+      <span class="marquee-item">Men's Consulting</span>
+      <span class="marquee-item">Wedding Consulting</span>
+      <span class="marquee-item">K-Beauty</span>
+      <span class="marquee-item">Personal Color</span>
+      <span class="marquee-item">Image Consulting</span>
+      <span class="marquee-item">Men's Consulting</span>
+      <span class="marquee-item">Wedding Consulting</span>
+      <span class="marquee-item">K-Beauty</span>
+    </div>
+  </div>
+  <div class="svc-block-wrap">
+    <div class="svc-block-head">
+      <span class="lbl">— Personal Image Services</span>
+      <h2>VL Personal<br>Image Services</h2>
+      <p>개인의 고유한 매력을 찾는 컬러 분석부터<br>남성 특화 맨즈컨설팅과 실전 쇼핑동행,<br>조직의 가치를 높이는 기업강의,<br>그리고 웨딩컨설팅까지.</p>
+    </div>
+    <div class="svc-grid">
+      <a class="svc-card" href="personal-styling.html">
+        <div class="img"><img src="b1.jpg" alt="Personal Styling"></div>
+        <span class="label">Personal Styling</span>
+      </a>
+      <a class="svc-card" href="lecture.html">
+        <div class="img"><img src="b2.jpg" alt="Corporate Lecture"></div>
+        <span class="label">Corporate Lecture</span>
+      </a>
+      <a class="svc-card" href="wedding-consulting.html">
+        <div class="img"><img src="b3.jpg" alt="Wedding Consulting"></div>
+        <span class="label">Wedding Consulting</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO SLIDER (사진 7장 + 좌우 화살표) -->
+<section class="pf-band reveal" id="bands">
+  <div class="pf-slider-wrap">
+    <button class="pf-nav prev" aria-label="Prev">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+    </button>
+    <button class="pf-nav next" aria-label="Next">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <div class="pf-slider" id="pfSlider">
+      <div class="pf-slide"><img src="por1.jpg" alt=""></div>
+      <div class="pf-slide"><img src="por2.jpg" alt=""></div>
+      <div class="pf-slide"><img src="por3.jpg" alt=""></div>
+      <div class="pf-slide"><img src="por4.jpg" alt=""></div>
+      <div class="pf-slide"><img src="por5.jpg" alt=""></div>
+      <div class="pf-slide"><img src="por6.jpg" alt=""></div>
+      <div class="pf-slide"><img src="por7.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO INFO BAND (그레이 + VIEW MORE) -->
+<section class="pf-info reveal">
+  <div class="pf-info-wrap">
+    <div class="pf-info-left">
+      <h2>VL Portfolio</h2>
+      <p>다양한 경험과 전문성으로 쌓아온 VL만의 컨설팅 기록.</p>
+    </div>
+    <a href="#" class="btn-view">View More</a>
+  </div>
+</section>
+
+<!-- STYLE GUIDES (흰 배경 + 3 카드 + 네이버 블로그 링크) -->
+<section class="sg-band reveal" id="guides">
+  <div class="sg-head">
+    <div class="sg-title">
+      <h2>Style Guides</h2>
+    </div>
+  </div>
+  <div class="sg-grid">
+    <a class="sg-card" href="https://blog.naver.com/jujae7981/223991734523" target="_blank" rel="noopener">
+      <div class="sg-img"><img src="st1.jpg" alt=""></div>
+      <h3>토탈이미지 컨설팅이란?!</h3>
+      <span class="sg-btn">View Guide</span>
+    </a>
+    <a class="sg-card" href="https://blog.naver.com/jujae7981/224304999906" target="_blank" rel="noopener">
+      <div class="sg-img"><img src="st2.png" alt=""></div>
+      <h3>40대 남자 헤어스타일링 진단</h3>
+      <span class="sg-btn">View Guide</span>
+    </a>
+    <a class="sg-card" href="https://blog.naver.com/jujae7981/223935009482" target="_blank" rel="noopener">
+      <div class="sg-img"><img src="st3.jpg" alt=""></div>
+      <h3>퍼스널컬러의 중요성!</h3>
+      <span class="sg-btn">View Guide</span>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT (예약 폼 + m3 사진) -->
+<section class="ct-band reveal" id="connect">
+  <div class="ct-wrap">
+    <div class="ct-left">
+      <h2>Contact.</h2>
+      <p class="lede">개인 상담부터 기업·브랜드 워크숍 예약까지 —<br>여기서 시작해주세요.</p>
+      <form class="ct-form" onsubmit="event.preventDefault();alert('예약 문의가 접수되었습니다. 24시간 이내 회신드리겠습니다.');this.reset();">
+        <label>
+          <span class="lbl">Name</span>
+          <div class="ct-row2">
+            <input type="text" placeholder="First Name" required>
+            <input type="text" placeholder="Last Name" required>
+          </div>
+        </label>
+        <label>
+          <span class="lbl">Email <small>(required)</small></span>
+          <input type="email" placeholder="you@example.com" required>
+        </label>
+        <label>
+          <span class="lbl">Message <small>(required)</small></span>
+          <textarea placeholder="문의 내용을 남겨주세요." required></textarea>
+        </label>
+        <button type="submit" class="ct-submit">Submit</button>
+      </form>
+    </div>
+    <div class="ct-right">
+      <img src="M3.jpg" alt="VL Value Light">
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (서브페이지와 동일) -->
+<footer class="foot">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <span class="tag">Contact</span>
+      <h3>협업 및 강의 문의</h3>
+      <p>기업 강의, 컨설팅, 협업 제안 등<br>언제든지 문의주세요.</p>
+      <a href="contact.html" class="btn-inquire">문의하기</a>
+    </div>
+    <div class="contact-info">
+      <a href="tel:01054901146" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2c1 2 3 4 5 5l2-3 5 2v4c0 1-1 2-2 2-9 0-15-6-15-15 0-1 1-2 2-2z"/></svg></span>
+        <small>Phone</small>
+        <span class="v">010-5490-1146</span>
+      </a>
+      <a href="mailto:vl.director00@gmail.com" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 7 9-7"/></svg></span>
+        <small>Mail</small>
+        <span class="v">vl.director00<br>@gmail.com</span>
+      </a>
+      <a href="https://www.instagram.com/value_light_" target="_blank" rel="noopener" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+        <small>Instagram</small>
+        <span class="v">@value_light_</span>
+      </a>
+      <a href="https://map.naver.com/p/entry/place/1079886156" target="_blank" rel="noopener" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4l4 7V5h4v14h-4l-4-7v7H6z"/></svg></span>
+        <small>Reservation</small>
+        <span class="v">네이버 예약</span>
+      </a>
+    </div>
+    <div class="contact-right">
+      <img class="mark-img" src="vl-symbol.png" alt="VL Symbol">
+      <span class="nm">VL VALUE LIGHT</span>
+      <span class="desc">IMAGE CONSULTING</span>
+    </div>
+  </div>
+</footer>
+<div class="foot-copy">© 2026 VL · VALUE LIGHT IMAGE CONSULTING. All Rights Reserved.</div>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+(function(){
+  const n=document.getElementById('nav');
+  const t=n.querySelector('.nav-toggle');
+  t.addEventListener('click',()=>{
+    const o=n.classList.toggle('open');
+    document.body.style.overflow=o?'hidden':'';
+  });
+  n.querySelectorAll('.nav-menu a').forEach(a=>a.addEventListener('click',()=>{
+    n.classList.remove('open');document.body.style.overflow='';
+  }));
+})();
+
+// Portfolio slider prev/next
+(function(){
+  const wrap=document.querySelector('.pf-slider-wrap');
+  if(!wrap) return;
+  const slider=wrap.querySelector('.pf-slider');
+  const prev=wrap.querySelector('.pf-nav.prev');
+  const next=wrap.querySelector('.pf-nav.next');
+  function step(){
+    const s=slider.querySelector('.pf-slide');
+    if(!s) return slider.clientWidth/3;
+    const gap=parseFloat(getComputedStyle(slider).gap)||2;
+    return s.offsetWidth+gap;
+  }
+  function update(){
+    const max=slider.scrollWidth-slider.clientWidth;
+    prev.toggleAttribute('disabled',slider.scrollLeft<=2);
+    next.toggleAttribute('disabled',slider.scrollLeft>=max-2);
+  }
+  prev.addEventListener('click',()=>slider.scrollBy({left:-step(),behavior:'smooth'}));
+  next.addEventListener('click',()=>slider.scrollBy({left:step(),behavior:'smooth'}));
+  slider.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
+</script>
+</body>
+</html>

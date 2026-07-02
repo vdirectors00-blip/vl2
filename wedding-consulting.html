@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Consulting | VL VALUE LIGHT</title>
+<meta name="description" content="VL VALUE LIGHT 웨딩 컨설팅 — 신부·신랑·커플을 위한 토탈 웨딩 이미지 컨설팅.">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="shared.css?v=3">
+<style>
+:root{
+  --purple:#6b4a9a;
+  --purple-light:#b8a4d8;
+  --purple-deep:#3d2865;
+}
+
+/* HERO (좌측 사진 풀와이드 + 우측 텍스트 오버레이) */
+.ps-hero{position:relative;width:100%;height:78vh;min-height:520px;max-height:780px;overflow:hidden;background:#0d0d0d}
+.ps-hero > img.ps-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:brightness(.82);z-index:1}
+.ps-hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.55) 100%);pointer-events:none}
+.ps-hero-txt{position:absolute;left:8%;top:50%;transform:translateY(-50%);z-index:5;max-width:640px;color:#fff}
+.ps-hero-eyebrow{font-size:13px;letter-spacing:5px;color:var(--purple-light);font-weight:700;text-transform:uppercase;margin-bottom:28px;display:block}
+.ps-hero-txt h1{font-family:'Hanken Grotesk','Pretendard Variable',sans-serif;font-size:76px;font-weight:800;line-height:1.02;letter-spacing:-1.8px;margin-bottom:28px;color:#fff}
+.ps-hero-txt p{font-size:17px;color:rgba(255,255,255,.88);line-height:1.75;letter-spacing:-.1px;font-weight:500;max-width:520px}
+
+/* SECTION HEAD */
+.sec-title{max-width:1280px;margin:0 auto;padding:100px 40px 0;text-align:center}
+.sec-title .lbl{font-size:12px;letter-spacing:4px;color:var(--purple);font-weight:700;text-transform:uppercase;display:block;margin-bottom:20px}
+.sec-title h2{font-family:'Hanken Grotesk','Pretendard Variable',sans-serif;font-size:44px;font-weight:800;letter-spacing:-1.2px;line-height:1.15;color:var(--ink)}
+.sec-title p.sub{margin-top:22px;font-size:15.5px;color:#555;line-height:1.85;max-width:640px;margin-left:auto;margin-right:auto}
+
+/* VL 웨딩 프로그램 (3 박스) */
+.programs{padding:56px 40px 100px;max-width:1280px;margin:0 auto}
+.pg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1080px;margin:0 auto}
+.pg-cell{
+  background:#fff;border-radius:8px;
+  padding:40px 28px;min-height:190px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.04);
+  transition:transform .35s,box-shadow .35s;
+  cursor:pointer;
+}
+.pg-cell:hover{
+  transform:translateY(-4px);
+  box-shadow:0 14px 32px rgba(107,74,154,.12),0 4px 10px rgba(0,0,0,.06);
+}
+.pg-cell .num{font-family:'Hanken Grotesk',sans-serif;font-size:12px;letter-spacing:3px;color:var(--purple);font-weight:800;text-transform:uppercase}
+.pg-cell h4{font-size:19px;font-weight:800;color:var(--ink);letter-spacing:-.4px;line-height:1.35}
+.pg-cell .tag{font-size:12.5px;color:#777;letter-spacing:.1px;line-height:1.55}
+
+/* 상세 설명 */
+.details{padding:0 0 120px}
+.dt-hero{width:100%;max-width:1440px;margin:0 auto 80px;padding:0 40px}
+.dt-hero img{width:100%;aspect-ratio:16/6;object-fit:cover;border-radius:10px;display:block}
+
+.dt-list{max-width:1080px;margin:0 auto;padding:0 40px;display:grid;gap:70px}
+.dt-item{
+  display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:flex-start;
+  padding-top:36px;border-top:1px solid var(--line);
+}
+.dt-item:first-child{border-top:0;padding-top:0}
+.dt-num{
+  font-family:'Hanken Grotesk',sans-serif;font-weight:800;
+  font-size:32px;color:var(--purple);letter-spacing:-.5px;
+  min-width:56px;
+}
+.dt-body h3{font-family:'Hanken Grotesk','Pretendard Variable',sans-serif;font-size:24px;font-weight:800;color:var(--ink);letter-spacing:-.6px;line-height:1.3;margin-bottom:14px}
+.dt-body .time{
+  display:inline-block;font-size:13px;color:var(--purple);font-weight:700;
+  padding:6px 14px;background:rgba(107,74,154,.08);border-radius:999px;
+  margin-bottom:22px;letter-spacing:.2px;
+}
+.dt-body p{font-size:15px;color:#3a3a37;line-height:1.9;margin-bottom:14px;letter-spacing:-.15px}
+.dt-body ul{list-style:none;display:grid;gap:8px;margin:14px 0 18px}
+.dt-body ul li{
+  font-size:15px;color:#3a3a37;line-height:1.75;letter-spacing:-.15px;
+  padding-left:20px;position:relative;font-weight:500;
+}
+.dt-body ul li::before{
+  content:'—';position:absolute;left:0;top:0;
+  color:var(--purple);font-weight:700;font-family:'Hanken Grotesk',sans-serif;
+  line-height:inherit;
+}
+.dt-body .pdf-note{
+  margin-top:14px;font-size:14px;color:var(--purple);font-weight:700;letter-spacing:-.1px;
+  padding:12px 18px;background:#f7f5fb;border-radius:6px;
+  display:inline-block;
+}
+.dt-body .highlight{
+  margin-bottom:18px;padding:14px 20px;
+  background:rgba(107,74,154,.06);border-left:3px solid var(--purple);
+  font-size:14.5px;color:var(--purple-deep);font-weight:700;letter-spacing:-.1px;line-height:1.6;
+}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .ps-hero{height:auto;min-height:0;max-height:none}
+  .ps-hero > img.ps-hero-img{position:relative;width:100%;height:48vh;min-height:280px}
+  .ps-hero-overlay{background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,.7) 100%)}
+  .ps-hero-txt{position:relative;left:auto;top:auto;transform:none;max-width:none;padding:48px 22px 60px;text-align:center;margin:0 auto;background:var(--ink)}
+  .ps-hero-eyebrow{font-size:11px;letter-spacing:3.5px;margin-bottom:18px}
+  .ps-hero-txt h1{font-size:38px;letter-spacing:-1px;margin-bottom:22px}
+  .ps-hero-txt p{font-size:14px}
+  .sec-title{padding:64px 22px 0}
+  .sec-title h2{font-size:28px;letter-spacing:-.8px}
+  .sec-title p.sub{font-size:14px}
+  .programs{padding:36px 22px 64px}
+  .pg-grid{grid-template-columns:1fr;gap:14px}
+  .pg-cell{padding:26px 22px;min-height:0}
+  .pg-cell h4{font-size:17px}
+  .dt-hero{margin-bottom:48px;padding:0 22px}
+  .dt-hero img{aspect-ratio:5/4;border-radius:6px}
+  .dt-list{padding:0 22px;gap:44px}
+  .dt-item{grid-template-columns:1fr;gap:14px;padding-top:28px}
+  .dt-num{font-size:24px;min-width:0}
+  .dt-body h3{font-size:19px;letter-spacing:-.4px;margin-bottom:12px}
+  .dt-body p,.dt-body ul li{font-size:14px}
+  .details{padding-bottom:72px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="vl-symbol.png" alt="" class="sym">
+    <span class="b">VL VALUE LIGHT</span>
+    <small>Image Consulting</small>
+  </a>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-menu">
+    <a href="about2.html">About</a>
+    <div class="nav-item">
+      <span class="nav-parent current">Personal Services</span>
+      <div class="nav-dropdown">
+        <a href="personal-styling.html">Personal Styling</a>
+        <a href="wedding-consulting.html" class="current">Wedding Consulting</a>
+      </div>
+    </div>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="lecture.html">Lecture</a>
+    <a href="contact.html">Contact</a>
+    <div class="nav-icons">
+      <a href="https://www.instagram.com/value_light_" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ps-hero">
+  <img class="ps-hero-img" src="b3.jpg" alt="">
+  <div class="ps-hero-overlay"></div>
+  <div class="ps-hero-txt">
+    <span class="ps-hero-eyebrow">Wedding Consulting</span>
+    <h1>Wedding Consulting</h1>
+    <p>신부와 신랑 모두를 위한 토탈 컨설팅으로,<br>인생에서 단 하루뿐인 그 순간을 가장 빛나는 모습으로 완성합니다.</p>
+  </div>
+</section>
+
+<!-- VL 웨딩 프로그램 -->
+<div class="sec-title">
+  <span class="lbl">— VL Wedding Programs</span>
+  <h2>VL 웨딩 프로그램</h2>
+  <p class="sub">신부 · 신랑 · 커플을 위한 3가지 웨딩 컨설팅으로 인생의 가장 빛나는 하루를 완성합니다.</p>
+</div>
+<section class="programs">
+  <div class="pg-grid">
+    <div class="pg-cell">
+      <span class="num">01</span>
+      <h4>신부 웨딩컨설팅</h4>
+      <span class="tag">Bride · 90 min</span>
+    </div>
+    <div class="pg-cell">
+      <span class="num">02</span>
+      <h4>신랑 웨딩컨설팅</h4>
+      <span class="tag">Groom · 60 min</span>
+    </div>
+    <div class="pg-cell">
+      <span class="num">03</span>
+      <h4>커플 웨딩컨설팅</h4>
+      <span class="tag">Couple · 120 min</span>
+    </div>
+  </div>
+</section>
+
+<!-- 상세 설명 -->
+<section class="details">
+  <div class="dt-hero">
+    <img src="W1.jpg" alt="Wedding Consulting Details">
+  </div>
+  <div class="dt-list">
+    <article class="dt-item">
+      <div class="dt-num">01</div>
+      <div class="dt-body">
+        <h3>1:1 웨딩 이미지 컨설팅 <span style="font-size:14px;font-weight:500;color:#888;letter-spacing:-.1px">(신부)</span></h3>
+        <span class="time">약 90분 진행</span>
+        <ul>
+          <li>웨딩 퍼스널컬러 진단 + 얼굴형 &amp; 체형 기반 드레스 스타일 추천</li>
+          <li>메이크업 톤 &amp; 헤어 스타일링 방향 설정</li>
+          <li>예복 · 드레스 · 촬영 의상까지 TPO별 실전 피드백</li>
+          <li>스드메(스튜디오 · 드레스 · 메이크업) 준비 전 필수 컨설팅</li>
+        </ul>
+        <div class="pdf-note">※ 웨딩 이미지 요약 PDF 제공</div>
+      </div>
+    </article>
+
+    <article class="dt-item">
+      <div class="dt-num">02</div>
+      <div class="dt-body">
+        <h3>1:1 웨딩 이미지 컨설팅 <span style="font-size:14px;font-weight:500;color:#888;letter-spacing:-.1px">(신랑)</span></h3>
+        <span class="time">약 60분 진행</span>
+        <ul>
+          <li>웨딩 퍼스널컬러 진단 + 얼굴형 &amp; 체형 스타일 추천</li>
+          <li>예복 · 촬영 의상까지 TPO별 실전 피드백</li>
+        </ul>
+        <div class="pdf-note">※ 웨딩 이미지 요약 PDF 제공</div>
+      </div>
+    </article>
+
+    <article class="dt-item">
+      <div class="dt-num">03</div>
+      <div class="dt-body">
+        <h3>2:1 웨딩 이미지 컨설팅 <span style="font-size:14px;font-weight:500;color:#888;letter-spacing:-.1px">(커플)</span></h3>
+        <div class="highlight">※ 예비 부부 추천 — 웨딩 프로필 및 본식 준비 최적화</div>
+        <span class="time">약 120분 진행</span>
+        <ul>
+          <li>신랑 · 신부 개별 진단 + 조화로운 커플 스타일 전략</li>
+          <li>드레스 · 턱시도, 헤어 &amp; 메이크업, 촬영 컨셉 조율</li>
+        </ul>
+        <div class="pdf-note">※ 커플 웨딩 이미지 요약 PDF 제공</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <span class="tag">Contact</span>
+      <h3>협업 및 강의 문의</h3>
+      <p>기업 강의, 컨설팅, 협업 제안 등<br>언제든지 문의주세요.</p>
+      <a href="contact.html" class="btn-inquire">문의하기</a>
+    </div>
+    <div class="contact-info">
+      <a href="tel:01054901146" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-3 2c1 2 3 4 5 5l2-3 5 2v4c0 1-1 2-2 2-9 0-15-6-15-15 0-1 1-2 2-2z"/></svg></span>
+        <small>Phone</small>
+        <span class="v">010-5490-1146</span>
+      </a>
+      <a href="mailto:vl.director00@gmail.com" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 7 9-7"/></svg></span>
+        <small>Mail</small>
+        <span class="v">vl.director00<br>@gmail.com</span>
+      </a>
+      <a href="https://www.instagram.com/value_light_" target="_blank" rel="noopener" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>
+        <small>Instagram</small>
+        <span class="v">@value_light_</span>
+      </a>
+      <a href="https://map.naver.com/p/entry/place/1079886156" target="_blank" rel="noopener" class="ci">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4l4 7V5h4v14h-4l-4-7v7H6z"/></svg></span>
+        <small>Reservation</small>
+        <span class="v">네이버 예약</span>
+      </a>
+    </div>
+    <div class="contact-right">
+      <img class="mark-img" src="vl-symbol.png" alt="VL Symbol">
+      <span class="nm">VL VALUE LIGHT</span>
+      <span class="desc">IMAGE CONSULTING</span>
+    </div>
+  </div>
+</footer>
+<div class="foot-copy">© 2026 VL · VALUE LIGHT IMAGE CONSULTING. All Rights Reserved.</div>
+
+<script>
+(function(){
+  var n=document.getElementById('nav');
+  var t=n.querySelector('.nav-toggle');
+  t.addEventListener('click',function(){
+    var o=n.classList.toggle('open');
+    document.body.style.overflow=o?'hidden':'';
+  });
+  n.querySelectorAll('.nav-menu a').forEach(function(a){
+    a.addEventListener('click',function(){n.classList.remove('open');document.body.style.overflow=''});
+  });
+})();
+</script>
+</body>
+</html>
