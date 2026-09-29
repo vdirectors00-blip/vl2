@@ -744,24 +744,27 @@ button{font-family:inherit;cursor:pointer;border:0;background:none}
   <div class="ct-wrap">
     <div class="ct-left">
       <h2>Contact.</h2>
-      <p class="lede">개인 상담부터 기업·브랜드 워크숍 예약까지 —<br>여기서 시작해주세요.</p>
+      <p class="lede">기업/기관/학교/브랜드 그룹 강의 문의는<br>이곳에 남겨주세요.</p>
       <form class="ct-form" onsubmit="event.preventDefault();alert('예약 문의가 접수되었습니다. 24시간 이내 회신드리겠습니다.');this.reset();">
+        <div class="ct-row2">
+          <label>
+            <span class="lbl">이름 <small>(필수)</small></span>
+            <input type="text" placeholder="이름" required>
+          </label>
+          <label>
+            <span class="lbl">연락처 <small>(필수)</small></span>
+            <input type="tel" placeholder="010-0000-0000" required>
+          </label>
+        </div>
         <label>
-          <span class="lbl">Name</span>
-          <div class="ct-row2">
-            <input type="text" placeholder="First Name" required>
-            <input type="text" placeholder="Last Name" required>
-          </div>
-        </label>
-        <label>
-          <span class="lbl">Email <small>(required)</small></span>
+          <span class="lbl">이메일 <small>(필수)</small></span>
           <input type="email" placeholder="you@example.com" required>
         </label>
         <label>
-          <span class="lbl">Message <small>(required)</small></span>
+          <span class="lbl">문의 내용 <small>(필수)</small></span>
           <textarea placeholder="문의 내용을 남겨주세요." required></textarea>
         </label>
-        <button type="submit" class="ct-submit">Submit</button>
+        <button type="submit" class="ct-submit">문의하기</button>
       </form>
     </div>
     <div class="ct-right">
